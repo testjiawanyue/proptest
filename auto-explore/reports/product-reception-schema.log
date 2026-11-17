@@ -1,0 +1,4 @@
+TYPE_COLS reception_id,type_code
+TYPES []
+REC_COLS reception_id,batch_id,package_id,product_id,number_year,small_seq,established_at,notice_visible_ceiling,inspection_year,confirmation,plan,plan_manual,box_count,create_by,update_by,update_time,work_state,work_group_mask,work_basis_json,first_completion_json,report_start_json
+BATCH_COLS batch_id,number_year,batch_seq,batch_no,received_at,company_name,recipient_name,postal_text,postal_search,address,address_extra,contact_name,phone,note,first_product_id,source_order_id,source_order_no,create_by,create_time,update_by,update_time

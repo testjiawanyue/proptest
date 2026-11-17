@@ -1,0 +1,22 @@
+{
+  "id": "CHARTER-CUST-CONFLICT-007",
+  "title": "冲突复验：公司名称重复是否被拦截",
+  "priority": "P0-conflict",
+  "goal": "创建一个公司名称后，再次创建同名公司，观察系统是否拦截。静态分析显示代码无唯一性检查（与用例 公司维护-007 预期冲突），本任务获取运行时证据。",
+  "linkedReqIds": ["REQ-009"],
+  "linkedBrIds": ["BR-041"],
+  "linkedCaseIds": ["公司维护-007"],
+  "startUrl": "/customer",
+  "constraints": ["仅使用带 AUTO- 前缀的测试数据", "完成后不删除数据，由环境重置处理"],
+  "oracleHints": [
+    { "kind": "api", "description": "观察到公司创建接口调用", "expect": "/prop/customer/company" },
+    {
+      "kind": "db",
+      "description": "同名 AUTO- 公司创建前后的数量变化",
+      "sql": "SELECT id, customer_name FROM prop_customer WHERE customer_name LIKE 'AUTO-%'",
+      "keyField": "id"
+    }
+  ],
+  "maxSteps": 25
+}
+

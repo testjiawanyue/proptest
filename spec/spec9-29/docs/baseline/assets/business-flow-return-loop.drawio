@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="26.0.0">
+  <diagram name="返厂闭环">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1650" pageHeight="1160" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="n0" value="来件到达&#xa;（产品返厂）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="laneRecv" value="受付 FEAT-14（大番号 → 包裹 → 小番号）" style="swimlane;startSize=30;html=1;fillColor=none;strokeColor=#9673a6;fontColor=#1a1a1a;fontSize=12;align=left;verticalAlign=top;pointerEvents=0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="160" width="420" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="k1" value="大番号&#xa;（一次实际收件批次）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="laneRecv">
+          <mxGeometry x="30" y="50" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="k2" value="包裹&#xa;（实际物理包裹）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="laneRecv">
+          <mxGeometry x="230" y="50" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="k3" value="小番号&#xa;（单台产品受付：类型／年度／&#xa;本次作业／处理计划）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="laneRecv">
+          <mxGeometry x="115" y="150" width="190" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ek1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="laneRecv" source="k1" target="k2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ek2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.85;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="laneRecv" source="k2" target="k3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="laneWork" value="作业管理 FEAT-16（五个工作组各自登记；报告；回收／报废确认）" style="swimlane;startSize=30;html=1;fillColor=none;strokeColor=#9673a6;fontColor=#1a1a1a;fontSize=12;align=left;verticalAlign=top;pointerEvents=0;" vertex="1" parent="1">
+          <mxGeometry x="770" y="60" width="380" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="g1" value="縫製" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="laneWork">
+          <mxGeometry x="30" y="50" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="g2" value="センサ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="laneWork">
+          <mxGeometry x="30" y="115" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="g3" value="組立" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="laneWork">
+          <mxGeometry x="30" y="180" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="g4" value="展開修理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="laneWork">
+          <mxGeometry x="30" y="245" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="g5" value="クリーニング" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="laneWork">
+          <mxGeometry x="30" y="310" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="rep" value="报告&#xa;（点检／回收／报废；&#xa;每次生成不可变新版本）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="laneWork">
+          <mxGeometry x="210" y="115" width="150" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="repNote" value="生成报告 ≠ 已回收／已报废" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#b85450;" vertex="1" parent="laneWork">
+          <mxGeometry x="200" y="200" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eg1" value="登记" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.25;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="laneWork" source="g1" target="rep">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eg2" value="登记" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.75;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="laneWork" source="g3" target="rep">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x1" value="返送 FEAT-17&#xa;（确认寄出＝正式返送事实）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="110" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x2" value="在客户处／生命周期继续&#xa;（客户关系不变；&#xa;不增加交付数）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1490" y="105" width="190" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="x3" value="确认回收&#xa;（结束当前订单关系；&#xa;历史保留，履约数不扣减）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="290" width="200" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="x4" value="确认报废&#xa;（生命周期终点，不可逆；&#xa;禁止出货与再受付；&#xa;部件个体不随之报废）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="440" width="200" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="loopNote" value="回收只结束当前订单关系——spec 未规定回收后的产品去向，故不画回收之后的衔接。" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#666666;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1490" y="300" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="el0" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="n0" target="k1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="el1" value="进入作业" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=11;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="k3" target="g3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="730" y="345" />
+              <mxPoint x="730" y="262" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="el2" value="处理计划＝返回客户" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=11;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="laneWork" target="x1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1190" y="270" />
+              <mxPoint x="1190" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="el3" value="确认寄出" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=11;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="x1" target="x2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="el4" value="处理计划＝PROP回收" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=11;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="laneWork" target="x3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="el5" value="处理计划＝报废" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;entryX=0;entryY=0.5;fontSize=11;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="laneWork" target="x4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1190" y="375" />
+              <mxPoint x="1190" y="482" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend2" value="图例" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;verticalAlign=top;fontStyle=1;fontSize=12;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="640" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="lh1" value="" style="rounded=1;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="legend2">
+          <mxGeometry x="10" y="30" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="lh1t" value="受付／作业／返送（返厂闭环）" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontStyle=0;" vertex="1" parent="legend2">
+          <mxGeometry x="50" y="28" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="lh2" value="" style="rounded=1;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="legend2">
+          <mxGeometry x="260" y="30" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="lh2t" value="回收（只结束当前订单关系）" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontStyle=0;" vertex="1" parent="legend2">
+          <mxGeometry x="300" y="28" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="lh3" value="" style="rounded=1;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="legend2">
+          <mxGeometry x="510" y="30" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="lh3t" value="报废（终点）" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontStyle=0;" vertex="1" parent="legend2">
+          <mxGeometry x="550" y="28" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="lh4" value="" style="rounded=1;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="legend2">
+          <mxGeometry x="10" y="58" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="lh4t" value="产品回到客户处（生命周期继续）" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontStyle=0;" vertex="1" parent="legend2">
+          <mxGeometry x="50" y="56" width="220" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

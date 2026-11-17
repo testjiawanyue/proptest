@@ -1,0 +1,97 @@
+[
+  {
+    "name": "system file/home/profile handlers display Japan under different default zones",
+    "error": "",
+    "file": "business-time-system-pages.test.mjs"
+  },
+  {
+    "name": "base data renders the two business lists with value status and action columns only",
+    "error": "",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer list failures preserve the successful result and retry immutable query, page and reset snapshots",
+    "error": "",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer list first failure is retryable and unmount invalidates late responses",
+    "error": "",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "part profile status success closes over one write while failed refresh only retries reads",
+    "error": "2 subtests failed",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "part profile initial and edit refresh recovery keep only the latest read and ignore unmounted writes",
+    "error": "",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer detail first read failure ends loading, retry and return only read",
+    "error": "",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer site delete closes immediately after success and failed refresh retries GET without DELETE",
+    "error": "",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer saved refresh failure preserves saved fact and only retries reads",
+    "error": "",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "WIP route applies independently of row stages; reset preserves chosen stage and regular entry defaults inspected",
+    "error": "",
+    "file": "prop-dashboard.test.mjs"
+  },
+  {
+    "name": "same product component route change invalidates old success/finally and resets pagination and other filters",
+    "error": "",
+    "file": "prop-dashboard.test.mjs"
+  },
+  {
+    "name": "C-S1 actual controller keeps shared preparation routes return-only until D has a real consumer",
+    "error": "@GetMapping(\"/{id}\")",
+    "file": "prop-return.test.mjs"
+  },
+  {
+    "name": "return UI resolves registered Japanese resources and interpolates counts without rewriting data",
+    "error": "",
+    "file": "prop-return.test.mjs"
+  },
+  {
+    "name": "actual parent unmount/rebuild restores the original unknown command only for its return",
+    "error": "NotificationMailModal is not defined",
+    "file": "prop-waybill.test.mjs"
+  },
+  {
+    "name": "disposition modal keeps complete irreversible consequences and original conditional actions",
+    "error": "",
+    "file": "prop-work-presentation.test.mjs"
+  },
+  {
+    "name": "disposal reception type renders existing red class, independent of processing plan",
+    "error": "_ctx.monthLabel is not a function",
+    "file": "prop-work.test.mjs"
+  },
+  {
+    "name": "B-S4 actual terminal table disables only product mutations and always shows fact before changed plan",
+    "error": "_ctx.monthLabel is not a function",
+    "file": "prop-work.test.mjs"
+  },
+  {
+    "name": "D report buttons remain available under every plan and emit only the receipt target",
+    "error": "_ctx.monthLabel is not a function",
+    "file": "prop-work.test.mjs"
+  },
+  {
+    "name": "RR batch header actions target batch identity on either tab and preserve product report actions",
+    "error": "_ctx.monthLabel is not a function",
+    "file": "prop-work.test.mjs"
+  }
+]

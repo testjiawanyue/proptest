@@ -1,0 +1,15 @@
+{
+  "id": "CHARTER-SMOKE-001",
+  "title": "冒烟：登录并查看首页看板",
+  "priority": "P2-mainflow",
+  "goal": "登录系统，确认首页看板正常渲染，无接口 500 错误，无页面未捕获异常。",
+  "linkedReqIds": ["REQ-002", "REQ-008"],
+  "linkedBrIds": [],
+  "linkedCaseIds": [],
+  "startUrl": "/",
+  "constraints": ["只读操作", "不得修改任何数据"],
+  "oracleHints": [
+    { "kind": "ui-text", "description": "首页渲染出导航或看板内容", "expect": "首页" }
+  ],
+  "maxSteps": 10
+}

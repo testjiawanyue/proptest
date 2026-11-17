@@ -1,0 +1,18 @@
+[
+  {
+    "description": "【首页看板】今日作业未排除「作废/不合格」产品（DASH-001）：selectTodayWork 仅过滤 p.deleted_time IS NULL，未排除无效(invalid)受付产品；spec §3.4 / VAL-04 明确要求「已作废的作业记录不计入今日作业」，与 §5 一致",
+    "priority": "P2",
+    "type": "BUG",
+    "reporter": "人工测试",
+    "remark": "来源：v3.0 流程 S2 代码复核（回到当前 prop_new 代码 re-check）发现，非运行时复现，经 S3 人工裁定为真实缺陷。背景：代码无独立 void 状态，「作废」=批处理给产品打 invalid 标记（来源 WorkMapper.xml 的 invalid 派生）。影响用例：今日作业-004（作废作业记录不计入今日作业）。修复建议：在 selectTodayWork 中排除 invalid 受付产品。证据：PropDashboardMapper.xml:68-76；WorkMapper.xml invalid 派生。复验：开发修复后构造 invalid 受付产品+今日作业场景回归。",
+    "date": "2026-11-13"
+  },
+  {
+    "description": "【首页看板】今日作业/今日受付未排除「报废」产品（DASH-002）：selectTodayWork 与 receivedToday 仅过滤 p.deleted_time IS NULL，未排 scrapped_time；而同看板 selectFactory/selectProducts 已排除报废，前后口径不一致；spec §5 明确规定「报废一律不参与统计」",
+    "priority": "P2",
+    "type": "BUG",
+    "reporter": "人工测试",
+    "remark": "来源：v3.0 流程 S2 代码复核发现，经 S3 人工裁定为真实缺陷。影响用例：厂内作业-011（已报废在制品统一排除）、厂内库存-006（报废产品不计入成品在库）、厂内作业-002（回收或报废不计入待清洗）。修复建议：在 selectTodayWork 与 receivedToday 两处均加 AND p.scrapped_time IS NULL，与 selectFactory/selectProducts 口径对齐。证据：PropDashboardMapper.xml:20-40,68-76。复验：开发修复后构造报废产品+今日作业/今日受付场景回归。",
+    "date": "2026-11-13"
+  }
+]

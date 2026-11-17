@@ -1,0 +1,1310 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-12T09:00:26.087Z",
+  "entries": [
+    {
+      "id": "l2-webauto-mainflow",
+      "cmd": "py -3.11 -m pytest -m mainflow -vv --base-url=http://localhost:8090",
+      "cwd": "E:\\proptest\\webauto\\webtest",
+      "tags": [
+        "l2",
+        "mainflow"
+      ],
+      "timeoutSec": 900,
+      "note": "webauto 11 条主流程（L2 主干）"
+    },
+    {
+      "id": "_tmp_check_state",
+      "cmd": "npx tsx \"scripts\\_tmp_check_state.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "archive"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "cleanup-auto-data",
+      "cmd": "npx tsx \"scripts\\cleanup\\cleanup-auto-data.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "cleanup",
+        "destructive"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "inventory-auto-data",
+      "cmd": "npx tsx \"scripts\\cleanup\\inventory-auto-data.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "cleanup",
+        "destructive"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "smoke-after-auto-cleanup",
+      "cmd": "npx tsx \"scripts\\cleanup\\smoke-after-auto-cleanup.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "cleanup",
+        "destructive"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-auto-cleanup",
+      "cmd": "npx tsx \"scripts\\cleanup\\verify-auto-cleanup.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "cleanup",
+        "destructive"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "customer-runtime-utils",
+      "cmd": "npx tsx \"scripts\\customer\\customer-runtime-utils.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "inspect-address",
+      "cmd": "npx tsx \"scripts\\customer\\inspect-address.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "inspect",
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "inspect-customer",
+      "cmd": "npx tsx \"scripts\\customer\\inspect-customer.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "inspect",
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "inspect-detail",
+      "cmd": "npx tsx \"scripts\\customer\\inspect-detail.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "inspect",
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "inspect-dialog",
+      "cmd": "npx tsx \"scripts\\customer\\inspect-dialog.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "inspect",
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "inspect-edit",
+      "cmd": "npx tsx \"scripts\\customer\\inspect-edit.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "inspect",
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "inspect-site",
+      "cmd": "npx tsx \"scripts\\customer\\inspect-site.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "inspect",
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "observe-missing",
+      "cmd": "npx tsx \"scripts\\customer\\observe-missing.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "inspect",
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-concurrent-edit",
+      "cmd": "npx tsx \"scripts\\customer\\verify-concurrent-edit.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-customer-cross-permission",
+      "cmd": "npx tsx \"scripts\\customer\\verify-customer-cross-permission.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-customer-edit-delete",
+      "cmd": "npx tsx \"scripts\\customer\\verify-customer-edit-delete.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-customer-query-maintenance",
+      "cmd": "npx tsx \"scripts\\customer\\verify-customer-query-maintenance.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-delete-address",
+      "cmd": "npx tsx \"scripts\\customer\\verify-delete-address.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-delete-site",
+      "cmd": "npx tsx \"scripts\\customer\\verify-delete-site.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-delete-site2",
+      "cmd": "npx tsx \"scripts\\customer\\verify-delete-site2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-dup-company",
+      "cmd": "npx tsx \"scripts\\customer\\verify-dup-company.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-email-format",
+      "cmd": "npx tsx \"scripts\\customer\\verify-email-format.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:customer"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "db-query",
+      "cmd": "npx tsx \"scripts\\db-query.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:misc"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "debug-remove",
+      "cmd": "npx tsx \"scripts\\debug\\debug-remove.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "archive"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "debug-select",
+      "cmd": "npx tsx \"scripts\\debug\\debug-select.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "archive"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "debug-status",
+      "cmd": "npx tsx \"scripts\\debug\\debug-status.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "archive"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "explore",
+      "cmd": "npx tsx \"scripts\\explore.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:misc"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "cleanup-md-test-data-002",
+      "cmd": "npx tsx \"scripts\\masterdata\\cleanup-md-test-data-002.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "inspect-partprofile",
+      "cmd": "npx tsx \"scripts\\masterdata\\inspect-partprofile.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "inspect",
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "inspect-pp-create",
+      "cmd": "npx tsx \"scripts\\masterdata\\inspect-pp-create.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "inspect",
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-md-basedata-2",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-md-basedata-2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-md-basedata-fix",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-md-basedata-fix.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-md-basedata-full",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-md-basedata-full.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-md-partprofile-2",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-md-partprofile-2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-md-partprofile-full",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-md-partprofile-full.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-md-permission-2",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-md-permission-2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-md-workoption-2",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-md-workoption-2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-md-workoption-fix",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-md-workoption-fix.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-md-workoption-full",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-md-workoption-full.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-part-concurrent",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-part-concurrent.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-part-create",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-part-create.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-part-status",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-part-status.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-part-status2",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-part-status2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-version-entry",
+      "cmd": "npx tsx \"scripts\\masterdata\\verify-version-entry.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:masterdata"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe-batch-drawer",
+      "cmd": "npx tsx \"scripts\\order\\_probe-batch-drawer.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe-batch-ui-current",
+      "cmd": "npx tsx \"scripts\\order\\_probe-batch-ui-current.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_a",
+      "cmd": "npx tsx \"scripts\\order\\_probe_a.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_a2",
+      "cmd": "npx tsx \"scripts\\order\\_probe_a2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_a3",
+      "cmd": "npx tsx \"scripts\\order\\_probe_a3.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_b",
+      "cmd": "npx tsx \"scripts\\order\\_probe_b.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_b2",
+      "cmd": "npx tsx \"scripts\\order\\_probe_b2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_b3",
+      "cmd": "npx tsx \"scripts\\order\\_probe_b3.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_b4",
+      "cmd": "npx tsx \"scripts\\order\\_probe_b4.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_b_fixture",
+      "cmd": "npx tsx \"scripts\\order\\_probe_b_fixture.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_b_flow",
+      "cmd": "npx tsx \"scripts\\order\\_probe_b_flow.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_b_waybill",
+      "cmd": "npx tsx \"scripts\\order\\_probe_b_waybill.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_batch_api",
+      "cmd": "npx tsx \"scripts\\order\\_probe_batch_api.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_c1_ui2",
+      "cmd": "npx tsx \"scripts\\order\\_probe_c1_ui2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_c2_docs",
+      "cmd": "npx tsx \"scripts\\order\\_probe_c2_docs.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_c2_prepare",
+      "cmd": "npx tsx \"scripts\\order\\_probe_c2_prepare.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_c_doc_ui",
+      "cmd": "npx tsx \"scripts\\order\\_probe_c_doc_ui.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_c_shape",
+      "cmd": "npx tsx \"scripts\\order\\_probe_c_shape.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_c_ui",
+      "cmd": "npx tsx \"scripts\\order\\_probe_c_ui.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_config",
+      "cmd": "npx tsx \"scripts\\order\\_probe_config.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_order_b_detail",
+      "cmd": "npx tsx \"scripts\\order\\_probe_order_b_detail.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_order_list",
+      "cmd": "npx tsx \"scripts\\order\\_probe_order_list.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_order_list_search",
+      "cmd": "npx tsx \"scripts\\order\\_probe_order_list_search.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "_probe_order_plan",
+      "cmd": "npx tsx \"scripts\\order\\_probe_order_plan.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "order-batch-utils",
+      "cmd": "npx tsx \"scripts\\order\\order-batch-utils.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "order-runtime-utils",
+      "cmd": "npx tsx \"scripts\\order\\order-runtime-utils.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "order-shipment-utils",
+      "cmd": "npx tsx \"scripts\\order\\order-shipment-utils.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-A-015",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-A-015.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-A",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-A.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-B",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-B.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-C1",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-C1.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-C2",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-C2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-C3a",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-C3a.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-C3b",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-C3b.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-C4a",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-C4a.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-C4b",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-C4b.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-C5",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-C5.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-batch-base",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-batch-base.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-batch-final",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-batch-final.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-batch-generate",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-batch-generate.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-batch-work",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-batch-work.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-batchprint",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-batchprint.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-create",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-create.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-edit-cancel",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-edit-cancel.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-explore",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-explore.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-list",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-list.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-permission",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-permission.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-relation",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-relation.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-order-shipment",
+      "cmd": "npx tsx \"scripts\\order\\verify-order-shipment.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:order"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-delete",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-delete.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-delete2",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-delete2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-detail",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-detail.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-explore",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-explore.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-list",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-list.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-mgmt-a",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-mgmt-a.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-mgmt-b",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-mgmt-b.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-mgmt-c",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-mgmt-c.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-mgmt-d1",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-mgmt-d1.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-mgmt-d2",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-mgmt-d2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-mgmt-d3",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-mgmt-d3.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-mgmt-d4",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-mgmt-d4.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-parts",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-parts.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-parts2",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-parts2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-product-tracing",
+      "cmd": "npx tsx \"scripts\\product\\verify-product-tracing.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:product"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "cleanup-prod-test-data",
+      "cmd": "npx tsx \"scripts\\production\\cleanup-prod-test-data.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "probe-inspection-result",
+      "cmd": "npx tsx \"scripts\\production\\probe-inspection-result.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "probe-prod-state",
+      "cmd": "npx tsx \"scripts\\production\\probe-prod-state.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "probe-prod-state2",
+      "cmd": "npx tsx \"scripts\\production\\probe-prod-state2.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "prod-runtime-utils",
+      "cmd": "npx tsx \"scripts\\production\\prod-runtime-utils.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-prod-assembly-029-031",
+      "cmd": "npx tsx \"scripts\\production\\verify-prod-assembly-029-031.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-prod-assembly-cases",
+      "cmd": "npx tsx \"scripts\\production\\verify-prod-assembly-cases.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-prod-assembly",
+      "cmd": "npx tsx \"scripts\\production\\verify-prod-assembly.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-prod-fuzz",
+      "cmd": "npx tsx \"scripts\\production\\verify-prod-fuzz.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-prod-inspection-018-022",
+      "cmd": "npx tsx \"scripts\\production\\verify-prod-inspection-018-022.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-prod-inspection-cases",
+      "cmd": "npx tsx \"scripts\\production\\verify-prod-inspection-cases.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-prod-inspection",
+      "cmd": "npx tsx \"scripts\\production\\verify-prod-inspection.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-prod-intake-028-029",
+      "cmd": "npx tsx \"scripts\\production\\verify-prod-intake-028-029.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-prod-intake-cases",
+      "cmd": "npx tsx \"scripts\\production\\verify-prod-intake-cases.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-prod-intake",
+      "cmd": "npx tsx \"scripts\\production\\verify-prod-intake.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-prod-permission",
+      "cmd": "npx tsx \"scripts\\production\\verify-prod-permission.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "verify-prod-replace",
+      "cmd": "npx tsx \"scripts\\production\\verify-prod-replace.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "module:production"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "report",
+      "cmd": "npx tsx \"scripts\\report.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "tool"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "selftest",
+      "cmd": "npx tsx \"scripts\\selftest.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "tool"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    },
+    {
+      "id": "smoke",
+      "cmd": "npx tsx \"scripts\\smoke.ts\"",
+      "cwd": "E:\\proptest\\auto-explore",
+      "tags": [
+        "smoke"
+      ],
+      "timeoutSec": 600,
+      "enabled": true
+    }
+  ]
+}

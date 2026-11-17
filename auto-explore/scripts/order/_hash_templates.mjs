@@ -1,0 +1,2 @@
+import fs from 'node:fs';import crypto from 'node:crypto';
+for(const p of ['delivery-note','guarantee']){for(const f of ['template.xhtml','report.css']){const b=fs.readFileSync(`E:/proptest/prop_new/ruoyi-prop/src/main/resources/prop/order-documents/${p}/v1/${f}`);const raw=crypto.createHash('sha256').update(b).digest('hex');const lf=crypto.createHash('sha256').update(b.toString('utf8').replace(/\r\n/g,'\n')).digest('hex');console.log(p,f,'raw',raw,'lf',lf,'crlf',b.includes(Buffer.from('\r\n')))}}

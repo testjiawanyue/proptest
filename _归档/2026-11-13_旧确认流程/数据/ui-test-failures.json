@@ -1,0 +1,287 @@
+[
+  {
+    "name": "system file/home/profile handlers display Japan under different default zones",
+    "error": "",
+    "file": "business-time-system-pages.test.mjs"
+  },
+  {
+    "name": "customer editor ignores stale edit reads and treats form validation as a local result",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer editor locks duplicate close and preserves draft after save failure",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer editor removes an existing address by session-bound identity and saves only finally",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer editor old address confirmations cannot remove another draft target",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer editor blocks old confirmations during validation and after unmount",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer editor removes a new draft address directly without confirmation or write",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "part profile modal locks close during save and ignores an older edit response",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "base data keeps the latest category and preserves a failed add draft",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "base data renders the two business lists with value status and action columns only",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "work options keep category/group context and failed draft",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "product part form rejects missing fields without sending and old product responses cannot refill",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "product part modal locks its real page entries while validation is pending and recovers after field errors",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "product part modal hands validation to one save and preserves sequential confirmations",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "product part modal preserves its draft and unlocks after save failure",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "product part modal ignores delayed validation after product switch or unmount",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "product part modal unlocks after a validation program error",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "replace body writes once when refresh fails and detail retry recovers",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "part detail ignores late A after B, retries failures, and uses canonical actor fallback",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "part detail failure keeps its target and retry replaces only that target",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer and part-profile validation lock their original editor sessions",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "base data clears failed switched context, retries reads, and never repeats a completed status write",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "work options clear a failed context and keep completed writes separate from refresh failure",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "base data and work option confirmations cannot write after their page context is invalid",
+    "error": "2 subtests failed",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "base data explicit write failure keeps the valid confirmation retryable",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "completed setting writes do not report a detached refresh result after unmount",
+    "error": "2 subtests failed",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "firmware modal isolates delayed A failure and finally from a submitting B session",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "firmware modal ignores delayed A success after B opens and a clean reopen clears B error",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "product destructive confirmations are bound to the opening product and ignore late responses",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer list commits only the latest complete response and an older finally keeps loading active",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer list failures preserve the successful result and retry immutable query, page and reset snapshots",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer list first failure is retryable and unmount invalidates late responses",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "part profile status success closes over one write while failed refresh only retries reads",
+    "error": "2 subtests failed",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "part profile status write failure stays a write failure and does not claim success",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "part profile status write and immediate refresh success commit authoritative rows",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "part profile reads ignore old success failure and finally while the latest request owns state",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "part profile unmount invalidates a pending list read",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "part profile initial and edit refresh recovery keep only the latest read and ignore unmounted writes",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer detail first read failure ends loading, retry and return only read",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer detail route switches and stale success catch finally never replace current customer",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer detail same-object newer read and unmount protect all read exits",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer site delete closes immediately after success and failed refresh retries GET without DELETE",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer delete impact, confirmation and late write are bound to their original customer",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer delete rejection ends busy, can cancel and only read to check; saved event keeps order keyword",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer saved refresh failure preserves saved fact and only retries reads",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer stale delete-impact failure does not end the new preview or show a dialog",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "customer failed late DELETE never alters or closes a newer customer dialog",
+    "error": "useI18n is not defined",
+    "file": "c01-c02-recovery-followup.test.mjs"
+  },
+  {
+    "name": "WIP route applies independently of row stages; reset preserves chosen stage and regular entry defaults inspected",
+    "error": "",
+    "file": "prop-dashboard.test.mjs"
+  },
+  {
+    "name": "same product component route change invalidates old success/finally and resets pagination and other filters",
+    "error": "",
+    "file": "prop-dashboard.test.mjs"
+  },
+  {
+    "name": "C-S1 actual controller keeps shared preparation routes return-only until D has a real consumer",
+    "error": "@GetMapping(\"/{id}\")",
+    "file": "prop-return.test.mjs"
+  },
+  {
+    "name": "return UI resolves registered Japanese resources and interpolates counts without rewriting data",
+    "error": "",
+    "file": "prop-return.test.mjs"
+  },
+  {
+    "name": "actual parent unmount/rebuild restores the original unknown command only for its return",
+    "error": "NotificationMailModal is not defined",
+    "file": "prop-waybill.test.mjs"
+  },
+  {
+    "name": "disposition modal keeps complete irreversible consequences and original conditional actions",
+    "error": "",
+    "file": "prop-work-presentation.test.mjs"
+  },
+  {
+    "name": "disposal reception type renders existing red class, independent of processing plan",
+    "error": "_ctx.monthLabel is not a function",
+    "file": "prop-work.test.mjs"
+  },
+  {
+    "name": "B-S4 actual terminal table disables only product mutations and always shows fact before changed plan",
+    "error": "_ctx.monthLabel is not a function",
+    "file": "prop-work.test.mjs"
+  },
+  {
+    "name": "D report buttons remain available under every plan and emit only the receipt target",
+    "error": "_ctx.monthLabel is not a function",
+    "file": "prop-work.test.mjs"
+  },
+  {
+    "name": "RR batch header actions target batch identity on either tab and preserve product report actions",
+    "error": "_ctx.monthLabel is not a function",
+    "file": "prop-work.test.mjs"
+  }
+]

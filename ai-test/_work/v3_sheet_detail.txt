@@ -1,0 +1,53 @@
+rows 187 cols 11
+col 1 序号 width 6.0
+col 2 所属章节 width 20.0
+col 3 用例标题 width 30.0
+col 4 用例编号 width 22.0
+col 5 测试点 width 34.0
+col 6 优先级 width 8.0
+col 7 前置条件 width 38.0
+col 8 测试步骤 width 48.0
+col 9 预期结果 width 52.0
+col 10 测试结果 width 12.0
+col 11 备注 width 32.0
+last rows:
+172 [171, '十一、受付履历与批次记录表补充', '履歴补充-015', '验证指定期间结束日期早于开始日期时不能查询。']
+173 [172, '十一、受付履历与批次记录表补充', '履歴补充-016', '验证指定期间缺少开始或结束日期时不能执行查询。']
+174 [173, '十一、受付履历与批次记录表补充', '履歴补充-017', '验证产品关键词命中时显示命中台数提示。']
+175 [174, '十一、受付履历与批次记录表补充', '履歴补充-018', '验证产品命中时对应大番号自动展开。']
+176 [175, '十一、受付履历与批次记录表补充', '履歴补充-019', '验证产品命中行以高亮样式展示并自动滚动定位。']
+177 [176, '十一、受付履历与批次记录表补充', '履歴补充-020', '验证大番号主表按受付日時从新到旧排序。']
+178 [177, '十一、受付履历与批次记录表补充', '履歴补充-021', '验证受付履歴主表每页展示 10 条大番号。']
+179 [178, '十一、受付履历与批次记录表补充', '履歴补充-022', '验证大番号没有公司名称时顾客列显示未确认客户。']
+180 [179, '十一、受付履历与批次记录表补充', '履歴补充-023', '验证受付日時列以日期和时间两行展示。']
+181 [180, '十一、受付履历与批次记录表补充', '履歴补充-024', '验证来件元列分两行展示邮编和地址。']
+182 [181, '十一、受付履历与批次记录表补充', '履歴补充-025', '验证件数列分别展示包裹数和制品台数。']
+183 [182, '十一、受付履历与批次记录表补充', '履歴补充-026', '验证确认列可同时显示未入力台数和要确认台数。']
+184 [183, '十一、受付履历与批次记录表补充', '履歴补充-027', '验证确认列没有事项时显示“—”。']
+185 [184, '十一、受付履历与批次记录表补充', '履歴补充-028', '验证主表操作列展示履歴功能的固定操作项。']
+186 [185, '十一、受付履历与批次记录表补充', '履歴补充-029', '验证点击大番号行可展开或收起包裹区。']
+187 [186, '十一、受付履历与批次记录表补充', '履歴补充-030', '验证包裹头显示包裹序号、制品数、未入力、要确认和详情入口。']
+prefix counts:
+Counter({'工作台补充': 81, '履歴补充': 55, '产品受付': 9, '包裹登记': 8, '大番号建立': 7, '受付履历查询': 7, '正式NG登记': 5, '批次记录表': 5, '大番号完成': 4, '受付作业边界': 3, '临时来件受付': 2})
+row heights [(184, 27.45), (185, 41.15), (186, 27.45), (187, 41.15)]
+fills/borders last
+2 <openpyxl.styles.alignment.Alignment object>
+Parameters:
+horizontal='center', vertical='top', textRotation=0, wrapText=True, shrinkToFit=None, indent=0.0, relativeIndent=0.0, justifyLastLine=None, readingOrder=0.0 None 00000000 Microsoft YaHei 10.0 thin thin thin thin
+186 <openpyxl.styles.alignment.Alignment object>
+Parameters:
+horizontal='center', vertical='top', textRotation=0, wrapText=True, shrinkToFit=None, indent=0.0, relativeIndent=0.0, justifyLastLine=None, readingOrder=0.0 None 00000000 Microsoft YaHei 10.0 thin thin thin thin
+187 <openpyxl.styles.alignment.Alignment object>
+Parameters:
+horizontal='center', vertical='top', textRotation=0, wrapText=True, shrinkToFit=None, indent=0.0, relativeIndent=0.0, justifyLastLine=None, readingOrder=0.0 None 00000000 Microsoft YaHei 10.0 thin thin thin thin
+sheet view None
+row1 font/fill <openpyxl.styles.fonts.Font object>
+Parameters:
+name='Microsoft YaHei', charset=134, family=None, b=True, i=False, strike=None, outline=None, shadow=None, condense=None, color=<openpyxl.styles.colors.Color object>
+Parameters:
+rgb='FFFFFFFF', indexed=None, auto=None, theme=None, tint=0.0, type='rgb', extend=None, sz=11.0, u=None, vertAlign=None, scheme=None FF1F4E78 <openpyxl.styles.alignment.Alignment object>
+Parameters:
+horizontal='center', vertical='center', textRotation=0, wrapText=None, shrinkToFit=None, indent=0.0, relativeIndent=0.0, justifyLastLine=None, readingOrder=0.0
+table style <openpyxl.worksheet.table.TableStyleInfo object>
+Parameters:
+name='TableStyleMedium2', showFirstColumn=False, showLastColumn=False, showRowStripes=True, showColumnStripes=False

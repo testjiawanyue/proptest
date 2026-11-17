@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+const f='E:/proptest/auto-explore/scripts/order/verify-order-C2.ts';
+let s=fs.readFileSync(f,'utf8');
+s=s.replace('import fs from "node:fs";','import fs from "node:fs";\nimport { execFileSync } from "node:child_process";');
+s=s.replace('const bytes = fs.readFileSync(downloaded);','const bytes = fs.readFileSync(downloaded);\n      const py = "import openpyxl,sys,json; w=openpyxl.load_workbook(sys.argv[1]); print(json.dumps([s.title for s in w.worksheets]))";\n      const sheets = JSON.parse(execFileSync("python", ["-c", py, downloaded], { encoding: "utf8" })) as string[];');
+s=s.replace('&& files.length === 1 && xlsxMagic && /2枚/.test(successText);','&& files.length === 1 && xlsxMagic && /2\\s*枚/.test(successText) && sheets.length === 2;');
+s=s.replace('弹窗提示含“2枚”=${/2枚/.test(successText)};','弹窗提示=“${successText.slice(0, 260)}”，提示含 2 枚=${/2\\s*枚/.test(successText)}，工作簿 sheet=${JSON.stringify(sheets)};');
+s=s.replace('await drawer.getByRole("button", { name: "納品書を印刷" }).click();','await drawer.getByRole("button", { name: "納品書を印刷" }).click();');
+s=s.replace('await modal.locator(".ant-modal-footer").getByRole("button", { name: "閉じる" }).click();\n      await page.waitForTimeout(500);\n      await drawer.getByRole("button", { name: "保障確認書を印刷" }).click();','await page.reload();\n      await page.waitForTimeout(1800);\n      const drawer2 = await openShipmentDrawer(page, orderId);\n      await drawer2.getByRole("button", { name: "保障確認書を印刷" }).click();');
+fs.writeFileSync(f,s,'utf8');
+console.log('patched c2');

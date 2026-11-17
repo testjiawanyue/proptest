@@ -1,0 +1,11 @@
+基础设置: colored cells=187 ['solid:FF1F4E78', 'solid:FFBFBFBF']
+客户管理: colored cells=66 ['solid:FF1F4E78', 'solid:FFBFBFBF']
+产品生产: colored cells=55 ['solid:FF1F4E78', 'solid:FFBFBFBF']
+产品管理: colored cells=99 ['solid:FF1F4E78', 'solid:FFBFBFBF']
+订单管理: colored cells=33 ['solid:FF1F4E78', 'solid:FFBFBFBF']
+点检管理: colored cells=33 ['solid:FF1F4E78', 'solid:FFBFBFBF']
+受付工作台: colored cells=11 ['solid:FF1F4E78']
+作业管理: colored cells=33 ['solid:FF1F4E78', 'solid:FFBFBFBF']
+首页看板: colored cells=11 ['solid:FF1F4E78']
+
+freeze: 基础设置=G1, 客户管理=G1, 产品生产=G1, 产品管理=G1, 订单管理=H1, 点检管理=H1, 受付工作台=D1, 作业管理=G1, 首页看板=D1

@@ -1,0 +1,17 @@
+﻿[
+  {
+    "description": "【订单管理】订单列表关键词搜索不支持产品名称/颜色：V5用例「订单列表查询-006」预期可按产品名称与颜色检索订单，实测关键词仅匹配注文管理番号/客户订单号/下单方/納品先四项（搜颜色、产品名均0命中）。代码与FEAT-10 §4.4四项口径一致，用例备注自标待确认——需需求裁决后调整用例或扩展代码。",
+    "priority": "P2",
+    "remark": "运行时复验：种子订单行含「一命多助/AUTO-紫色」，关键词搜两者 total=0；其余四项关键词均命中。证据：auto-explore/reports/verify-order-001.md 总表第1行，Trace verify-order-list。依据：REQ-044（requirement-baseline.md 第45节）、BR-001。"
+  },
+  {
+    "description": "【订单管理】寄送保存「无产品」口径与用例不一致：V5用例「发货管理-017」预期无产品保存失败，实测分两种模式——auto自动保存允许无产品（改发货日自动保存成功+提示「自動保存済」），explicit保存被拒（前端拦截不发请求+提示「製品を1台以上登録する。」，服务端复核409同款提示）。建议拆分用例区分两种保存模式。",
+    "priority": "P2",
+    "remark": "运行时复验：UI自动保存 code200 + 前端explicit拦截无请求 + API saveMode=explicit 409 / auto 200。证据：verify-order-001.md 总表第2行，Trace verify-order-shipment/explore。依据：REQ-052（baseline 第53节）、BR-031。"
+  },
+  {
+    "description": "【订单管理】解除产品关联强制选择基准处理（keep/clear），Spec口径为「不要求选择原因」：解除弹窗仅「基準月を保持/基準月をクリア」两项且无免选路径，不选直接确定被前端拦截（「基準を保持するかクリアするかを選択する。」）不发请求，API缺baselineAction返回409「今回の基準月の扱いを選択する。」。Spec未定义基准处理选项，需业务确认清除产品首次出货/基准月的适用场景。",
+    "priority": "P2",
+    "remark": "运行时复验：弹窗全文+无请求发出+API 409；keep/clear两路径效果均验证正确（keep保留基准/clear清空）。证据：verify-order-001.md 总表第3行，Trace verify-order-relation。依据：REQ-047（baseline 第48节）、BR-024、PropOrderRelationService.java:62-63。"
+  }
+]

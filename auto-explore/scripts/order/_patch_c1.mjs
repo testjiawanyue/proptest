@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+const u='E:/proptest/auto-explore/scripts/order/order-shipment-utils.ts';
+let s=fs.readFileSync(u,'utf8');
+s=s.replace('return drawer.locator(".ant-card").filter({ has: drawer.locator(".ant-card-head-title", { hasText: "今回発送する製品" }) }).last();','return drawer.locator(".ant-card").filter({ hasText: "今回発送する製品" }).last();');
+fs.writeFileSync(u,s,'utf8');
+const f='E:/proptest/auto-explore/scripts/order/verify-order-C1.ts';
+let c=fs.readFileSync(f,'utf8');
+c=c.replace('for (const no of [...range, ...mixed, single]) await ensureProduct(db, no);','for (const no of [...range, single]) await ensureProduct(db, no);\n  for (const no of [mixed[0], mixed[2]]) await ensureProduct(db, no);\n  await ensureProduct(db, mixed[1], { inspection: 0 });');
+c=c.replace('const passed = blockingOk && mixedOk && visibleCountMessage;','const passed = blockingOk && mixedOk && visibleCountMessage;');
+c=c.replace('status: passed ? "通过" : (blockingOk && mixedOk ? "部分验证" : "不通过"),','status: passed ? "通过" : (blockingOk && mixedOk ? "部分验证" : "不通过"),');
+fs.writeFileSync(f,c,'utf8');
+console.log('patched');

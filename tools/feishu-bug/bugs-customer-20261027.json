@@ -1,0 +1,18 @@
+[
+  {
+    "description": "【客户管理】客户并发编辑无冲突提示，后保存者静默覆盖先保存者修改（用例客户编辑-010）",
+    "priority": "P2",
+    "type": "BUG",
+    "reporter": "AI自动探索",
+    "remark": "运行时验证：基于同一版本两次PUT均返回成功(code=200)，后保存直接覆盖先保存，无版本冲突检测与提示（BR-059 无乐观锁）。注：REQ-009已于2026-10-20决策「并发编辑后保存覆盖先保存、不提供冲突提示」，行为与需求基线一致，建议修正V5用例预期。证据：auto-explore/reports/verify-customer-004.md；traces/customer-edit-delete.zip",
+    "date": "2026-10-27"
+  },
+  {
+    "description": "【客户管理】公司名称超长无明确提示：前端仅靠maxlength=200截断输入，API提交201字符返回通用500错误（用例公司维护-006）",
+    "priority": "P2",
+    "type": "BUG",
+    "reporter": "AI自动探索",
+    "remark": "运行时验证：新建公司弹窗名称输入框maxlength=200，第201字符无法输入，无任何「最长200字符」提示；绕过前端API直接提交201字符返回「処理を完了できませんでした」通用错误。支店名称同样。建议补充明确的长度提示文案。证据：auto-explore/reports/verify-customer-004.md；traces/customer-query-maintenance.zip",
+    "date": "2026-10-27"
+  }
+]

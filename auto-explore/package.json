@@ -1,0 +1,29 @@
+{
+  "name": "prop-auto-explore",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PROP E2E agent-driven exploratory testing (Playwright + multi-agent)",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "smoke": "tsx scripts/smoke.ts",
+    "explore": "tsx scripts/explore.ts",
+    "report": "tsx scripts/report.ts",
+    "selftest": "tsx scripts/selftest.ts",
+    "typecheck": "tsc --noEmit",
+    "suite": "tsx run-suite.ts",
+    "suite:sync": "tsx run-suite.ts --sync"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mysql2": "^3.11.0",
+    "playwright": "^1.47.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

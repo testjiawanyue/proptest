@@ -1,0 +1,12 @@
+{
+  "appId": "cli_aa52d6629cb8dd08",
+  "appSecret": "Q3UWE3JU8zpt25rE2xteUeyemjgxUU8M",
+  "wikiToken": "B8ICw5eQWigY9KkFNSjcK4cBnZd",
+  "appToken": "MdS4bA9PvayvjdseGwhc9kFnnXd",
+  "tableId": "tblTmyGONSxhmSAk",
+  "defaults": {
+    "type": "BUG",
+    "reporter": "AI自动探索",
+    "status": "新增"
+  }
+}

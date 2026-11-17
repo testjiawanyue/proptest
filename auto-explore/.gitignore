@@ -1,0 +1,7 @@
+node_modules/
+storage/*.json
+reports/*.json
+reports/*.md
+.env
+test-results/
+playwright-report/

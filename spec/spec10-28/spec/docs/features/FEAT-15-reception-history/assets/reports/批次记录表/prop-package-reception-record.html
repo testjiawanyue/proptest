@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PROP 包裹受付记录表 · A240512-003</title>
+<style>
+  :root {
+    --bg:      #f7f6f2;
+    --surface: #ffffff;
+    --fg:      #1a1916;
+    --muted:   #6b6964;
+    --border:  #e5e2da;
+    --border-strong: #d0ccc2;
+    --accent:  #1f4d2e;
+
+    --accent-soft: color-mix(in oklch, var(--accent) 12%, transparent);
+    --fg-soft:     color-mix(in oklch, var(--fg) 4%, transparent);
+
+    --font-display: 'Iowan Old Style', 'Charter', Georgia, 'Times New Roman', serif;
+    --font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Noto Sans CJK SC', sans-serif;
+    --font-mono:    ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+    --fs-meta: 10px;
+    --fs-cell: 11px;
+    --fs-body: 11.5px;
+
+    --radius: 3px;
+    --gap-sm: 8px;
+    --gap-md: 12px;
+
+    --page-w: 210mm;
+    --page-pad: 8mm;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  h1 { margin: 0; }
+  p { margin: 0; }
+  .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+  .page {
+    max-width: var(--page-w);
+    margin: 16px auto 48px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 0 var(--border), 0 8px 20px rgba(0,0,0,0.04);
+    padding: var(--page-pad);
+  }
+  @media print {
+    body { background: var(--surface); }
+    .page { border: 0; box-shadow: none; margin: 0; max-width: none; }
+    .sheet-page { page-break-before: always; }
+    .spec-table tr { page-break-inside: avoid; }
+  }
+  /* 屏幕上的“第二页”视觉分隔 */
+  .sheet-page {
+    margin-top: 20px;
+    padding-top: 12px;
+    border-top: 2px dashed var(--border-strong);
+    position: relative;
+  }
+  .sheet-page::before {
+    content: '— 第 2 页 —';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--surface);
+    padding: 0 10px;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── header ─────────────────────────────────────────────── */
+  .doc-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--gap-md);
+    padding-bottom: 6px;
+    border-bottom: 1.5px solid var(--fg);
+    margin-bottom: var(--gap-sm);
+    position: relative;
+  }
+  .doc-head::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 3px;
+    border-bottom: 1px solid var(--fg);
+    pointer-events: none;
+  }
+  .doc-head h1 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .doc-head .doc-ids {
+    display: inline-flex;
+    gap: 14px;
+    align-items: baseline;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--fg);
+    letter-spacing: 0.02em;
+  }
+  .doc-head .doc-ids .k {
+    color: var(--muted);
+    font-size: var(--fs-meta);
+    margin-right: 5px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── sections ───────────────────────────────────────────── */
+  .sec { margin-top: var(--gap-sm); }
+  .sec-t {
+    font-family: var(--font-mono);
+    font-size: var(--fs-meta);
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--fg);
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+  }
+
+  /* ── kv line ────────────────────────────────────────────── */
+  .kv-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+    font-size: var(--fs-cell);
+  }
+  .kv-line .item { display: inline-flex; gap: 6px; align-items: baseline; }
+  .kv-line .k { color: var(--muted); font-size: var(--fs-meta); }
+  .kv-line .v { color: var(--fg); }
+
+  /* ── package: images left, fields right column ─────────── */
+  .sec-pkg {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  .pkg-imgs {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 6px;
+    align-items: start;
+    min-width: 0;
+  }
+  .pkg-imgs .ph-img.main {
+    aspect-ratio: 16 / 9;
+  }
+  .pkg-imgs .side {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+  .pkg-imgs.count-1 { grid-template-columns: 1fr; }
+  .pkg-imgs.count-1 .side { display: none; }
+  .pkg-imgs.count-2 .side > :nth-child(2) { display: none; }
+  .ph-img {
+    background: linear-gradient(135deg, var(--accent-soft), var(--fg-soft)), var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    aspect-ratio: 16 / 9;
+    display: grid; place-items: center;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    padding: 4px;
+  }
+  /* 右侧字段列 */
+  .kv-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: var(--fs-cell);
+    border-left: 1px solid var(--border);
+    padding-left: 12px;
+    min-width: 0;
+  }
+  .kv-col .kv-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .kv-col .k { color: var(--muted); font-size: var(--fs-meta); letter-spacing: 0.02em; }
+  .kv-col .v { color: var(--fg); font-size: 12.5px; word-break: break-all; }
+  @media (max-width: 920px) {
+    .sec-pkg { grid-template-columns: 1fr; }
+    .kv-col { border-left: 0; padding-left: 0; }
+  }
+
+  /* ── summary inline ─────────────────────────────────────── */
+  .sum-inline {
+    display: flex;
+    gap: 24px;
+    font-size: var(--fs-cell);
+  }
+  .sum-inline .s { display: inline-flex; gap: 8px; align-items: baseline; }
+  .sum-inline .k { color: var(--muted); font-size: var(--fs-meta); }
+  .sum-inline .v { font-family: var(--font-display); font-size: 16px; font-weight: 600; }
+  .sum-inline .v em { font-style: normal; font-size: 10px; color: var(--muted); margin-left: 2px; }
+
+  /* ── spec comparison table ─────────────────────────────── */
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--fs-cell);
+    table-layout: fixed;
+  }
+  .spec-table col.c-label { width: 13%; }
+  .spec-table col.c-prod  { width: 21.75%; }
+  /* 表头两行:第一行编号,第二行名称 + 製造番号 */
+  .spec-table thead .pid {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    display: block;
+    word-break: break-all;
+  }
+  .spec-table thead .pname {
+    font-size: 10.5px;
+    color: var(--fg);
+    display: block;
+    margin-top: 3px;
+    line-height: 1.3;
+  }
+  .spec-table thead .psn {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.01em;
+    display: block;
+    margin-top: 1px;
+    word-break: break-all;
+  }
+
+  .spec-table tbody .rowhead {
+    background: transparent;
+    color: var(--fg);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 7px 8px 6px;
+  }
+  .spec-table tbody .rowhead td {
+    border-top: 1.5px solid var(--fg);
+    border-bottom: 1px dashed var(--border-strong);
+  }
+  .spec-table tbody tr.rowhead:first-child td { border-top: 0; }
+
+  .spec-table tbody th {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: var(--fs-meta);
+    letter-spacing: 0.02em;
+    background: transparent;
+  }
+  .spec-table tbody td { color: var(--fg); }
+  .spec-table tbody td.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+  .spec-table th, .spec-table td {
+    padding: 5px 8px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+    font-weight: 400;
+  }
+  .spec-table thead th {
+    border-bottom: 1px solid var(--fg);
+    padding: 6px 8px;
+  }
+  /* free-text cells */
+  .spec-table td .row-item { display: block; padding: 1px 0; }
+  .spec-table td .row-item + .row-item { border-top: 1px dashed var(--border); margin-top: 2px; padding-top: 3px; }
+  .spec-table td .row-item .d {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--muted);
+    margin-right: 6px;
+  }
+  .spec-table td .row-item .y {
+    color: var(--muted);
+    font-size: 10px;
+    margin-left: 4px;
+  }
+
+  /* ── footer ─────────────────────────────────────────────── */
+  .pagefoot {
+    margin-top: var(--gap-md);
+    padding-top: 4px;
+    border-top: 1px solid var(--border);
+    font-size: 9.5px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<main class="page" data-od-id="page">
+
+  <!-- ═══ 文件头 ═══ -->
+  <header class="doc-head" data-od-id="doc-head">
+    <div class="doc-ids">
+      <span><span class="k">包裹号</span><span class="num">A240512-003-PKG</span></span>
+      <span><span class="k">大番号</span><span class="num">A240512-003</span></span>
+    </div>
+    <div class="sum-inline" data-od-id="sum-head">
+      <span class="s"><span class="k">清洗</span><span class="v num">2<em>台</em></span></span>
+      <span class="s"><span class="k">展开维修</span><span class="v num">2<em>台</em></span></span>
+    </div>
+  </header>
+
+  <!-- ═══ 包裹 · 来件信息 ═══ -->
+  <section class="sec sec-pkg" data-od-id="sec-pkg">
+    <div class="pkg-imgs count-3" data-od-id="pkg-imgs">
+      <div class="ph-img main">包裹图片 1(主)</div>
+      <div class="side">
+        <div class="ph-img">包裹图片 2</div>
+        <div class="ph-img">包裹图片 3</div>
+      </div>
+    </div>
+    <div class="kv-col">
+      <div class="kv-row"><span class="k">公司名称</span><span class="v">仙台メディカル株式会社</span></div>
+      <div class="kv-row"><span class="k">地址主行</span><span class="v">宮城県仙台市青葉区中央 2-1-30</span></div>
+      <div class="kv-row"><span class="k">地址补充行</span><span class="v">仙台中央ビルディング 7F</span></div>
+      <div class="kv-row"><span class="k">联系人</span><span class="v">佐藤 健一 様</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ 产品对照表 ═══ -->
+  <section class="sec" data-od-id="sec-prods">
+    <div class="sec-t">产品 · 本包裹 4 台</div>
+
+    <table class="spec-table" data-od-id="prod-table">
+      <colgroup>
+        <col class="c-label"/>
+        <col class="c-prod"/>
+        <col class="c-prod"/>
+        <col class="c-prod"/>
+        <col class="c-prod"/>
+      </colgroup>
+      <thead>
+        <tr>
+          <th></th>
+          <th>
+            <span class="pid">A240512-003-0001</span>
+            <span class="pname">prop X 多参数监护仪</span>
+            <span class="psn">SN-2023-08-1142</span>
+          </th>
+          <th>
+            <span class="pid">A240512-003-0002</span>
+            <span class="pname">prop X 多参数监护仪</span>
+            <span class="psn">SN-2023-08-1187</span>
+          </th>
+          <th>
+            <span class="pid">A240512-003-0003</span>
+            <span class="pname">prop S 携带型血氧仪</span>
+            <span class="psn">SN-2024-02-0318</span>
+          </th>
+          <th>
+            <span class="pid">A240512-003-10047</span>
+            <span class="pname">prop L 外部传感器模块</span>
+            <span class="psn">SN-2024-11-0092</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="rowhead"><td colspan="5">本次受付</td></tr>
+        <tr>
+          <th>受付类型</th>
+          <td>修理受付</td>
+          <td>点検受付</td>
+          <td>修理受付</td>
+          <td>修理受付</td>
+        </tr>
+        <tr>
+          <th>年目</th>
+          <td></td>
+          <td class="num">第 2 年目</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>清洗</th>
+          <td>有</td>
+          <td>有</td>
+          <td>無</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>展开维修</th>
+          <td>有</td>
+          <td>無</td>
+          <td>有</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>起始传感器固件</th>
+          <td class="num">v2.4.1</td>
+          <td class="num">v2.4.1</td>
+          <td class="num">v3.0.0</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>临时装箱</th>
+          <td class="num">1 箱</td>
+          <td class="num">1 箱</td>
+          <td class="num">2 箱</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>是否需向客户确认</th>
+          <td>是</td>
+          <td>否</td>
+          <td>是</td>
+          <td>否</td>
+        </tr>
+        <tr>
+          <th>产品处理计划</th>
+          <td>返回客户</td>
+          <td>返回客户</td>
+          <td>prop 回收</td>
+          <td>报废</td>
+        </tr>
+
+        <tr class="rowhead"><td colspan="5">历史受付(本次受付成立之前)</td></tr>
+        <tr>
+          <th>受付记录</th>
+          <td>
+            <span class="row-item"><span class="d">2023-11-04</span>点検受付<span class="y">第 1 年目</span></span>
+            <span class="row-item"><span class="d">2024-03-21</span>修理受付</span>
+          </td>
+          <td>
+            <span class="row-item"><span class="d">2024-01-15</span>点検受付<span class="y">第 1 年目</span></span>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr class="rowhead"><td colspan="5">本次异常 · NG</td></tr>
+        <tr>
+          <th>文字</th>
+          <td>
+            <span class="row-item">异常: 电池仓盖卡扣松动,已临时加固。</span>
+          </td>
+          <td></td>
+          <td>
+            <span class="row-item">NG: 右下外壳裂纹,长度约 18mm。</span>
+          </td>
+          <td></td>
+        </tr>
+
+        <tr class="rowhead"><td colspan="5">本次受付备注</td></tr>
+        <tr>
+          <th>备注</th>
+          <td>
+            <span class="row-item">本次受付成立,确认前次线缆更换已记录,继续观察。</span>
+          </td>
+          <td>
+            <span class="row-item">本次受付成立,客户要求同时登记清洗需求。</span>
+          </td>
+          <td>
+            <span class="row-item">首次受付。客户口头说明跌落史,需重点检查外壳。</span>
+          </td>
+          <td>
+            <span class="row-item">本次小番号成立时未登记作业,起始固件与装箱信息暂缺,留空待源资料补录后再发行新版本。</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ═══ 页脚 ═══ -->
+  <footer class="pagefoot" data-od-id="pagefoot">
+    <span>PROP · 包裹受付记录表</span>
+    <span>V3 · 2026-10-19</span>
+  </footer>
+
+</main>
+
+</body>
+</html>

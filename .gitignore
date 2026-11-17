@@ -1,0 +1,95 @@
+# ========== 依赖 ==========
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# ========== 环境 / 敏感配置 ==========
+.env
+.env.local
+.env.*.local
+*.local/
+.codex/
+.token-cache.json
+
+# ========== 运行时临时 ==========
+storage/*.json
+logs/
+*.log.bak
+.DS_Store
+Thumbs.db
+
+# ========== auto-explore：垃圾测试产物 ==========
+auto-explore/reports/traces/
+auto-explore/reports/suite/
+auto-explore/reports/batchprint/
+auto-explore/reports/backups/
+auto-explore/reports/batch-*.json
+auto-explore/reports/batch-*.md
+auto-explore/reports/summary-*.json
+auto-explore/reports/*-runtime-results-*.json
+auto-explore/reports/prod-pending-cases.json
+auto-explore/reports/customer-unexecuted-cases.json
+auto-explore/reports/order-mgmt-undone.json
+auto-explore/reports/order-mgmt-undone-brief.md
+auto-explore/reports/product-mgmt-undone.json
+auto-explore/reports/product-mgmt-undone-*.log
+auto-explore/reports/*-fixtures.json
+auto-explore/reports/*-fixture-verify.log
+auto-explore/reports/*-seed.log
+auto-explore/reports/check-*.*
+auto-explore/reports/recheck-*.txt
+auto-explore/reports/recheck_*.txt
+auto-explore/reports/*-sheet-ids.txt
+auto-explore/reports/*-current-ids.txt
+auto-explore/reports/current-ids.txt
+auto-explore/reports/*-probe*.*
+auto-explore/reports/probe-*.*
+auto-explore/reports/run-*.log
+auto-explore/reports/pm-group*.log
+auto-explore/reports/cleanup-*.*
+auto-explore/reports/update-v5-*.*
+auto-explore/reports/edit-v5-*.json
+auto-explore/reports/write-*-report.log
+auto-explore/reports/verify-edit.txt
+auto-explore/reports/verify-masterdata-001.md.bak-20261027
+auto-explore/reports/debug-*.png
+auto-explore/reports/order-A-*-probe.png
+auto-explore/reports/order-waybill-*.xlsx
+auto-explore/reports/order-waybill-*.prn
+auto-explore/reports/part-export-*.xlsx
+auto-explore/reports/part-export-*.json
+auto-explore/reports/*.xlsx
+auto-explore/reports/*.prn
+auto-explore/reports/*.download
+auto-explore/reports/*.bak.json
+
+# auto-explore：scripts 下一次性调试/探针脚本（archive 标记，suite:sync 不执行）
+auto-explore/scripts/_probe*.ts
+auto-explore/scripts/_tmp*.ts
+auto-explore/scripts/debug/
+auto-explore/scripts/case-tools/
+
+# ========== 备份 / DB 执行产物 ==========
+backups/
+db-exec-*/
+config-backup/
+webauto-backup-*.zip
+auto-explore/.env
+
+# ========== 构建渲染产物（图片） ==========
+_v4_build/report_render*/
+
+# ========== webauto ==========
+webauto/webtest/debug.log
+
+# ========== AI 辅助测试中间产物 ==========
+ai-test/_work/__pycache__/
+ai-test/.tmp_*.txt
+
+# ========== 测试框架产物 ==========
+test-results/
+playwright-report/
+.pytest_cache/
