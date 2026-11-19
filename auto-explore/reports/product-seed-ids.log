@@ -1,6 +1,0 @@
-PROFILE1 [{"profile_id":1,"part_type":"jacket","current_version_id":12}]
-MAX_PRODUCT [{"maxId":35}]
-MAX_PART [{"maxId":797}]
-MAX_EVENT [{"maxId":125}]
-BATCHES []
-PRODUCT24_BODY [{"part_id":67,"part_no":"90403","active_part_no":"90403","part_type":"jacket","source_type":"intake","current_profile_id":16,"current_profile_version_id":26,"current_firmware_id":null,"deleted_time":null,"deleted_by":null,"create_by":"admin","create_time":"2026-10-27T07:07:20.000Z","update_by":"","update_time":null,"remark":null}]

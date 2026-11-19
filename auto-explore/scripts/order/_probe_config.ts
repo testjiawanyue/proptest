@@ -1,2 +1,0 @@
-import {DbClient} from "./scripts/customer/customer-runtime-utils.js";
-(async()=>{const d=new DbClient();await d.connect();const r=await d.query("SELECT config_key,config_value,LENGTH(config_value) l FROM sys_config WHERE config_key LIKE 'prop.order%' ORDER BY config_key");console.log(JSON.stringify(r,null,2));await d.close()})();

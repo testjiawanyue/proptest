@@ -1,2 +1,0 @@
-import { apiLogin } from "./order-runtime-utils.js"; import { apiCall } from "../production/prod-runtime-utils.js";
-(async()=>{const t=await apiLogin("admin","admin123");for(const type of ["waybill","deliveryNote","guarantee"]){const p=await apiCall(t,"GET",`/prop/shipment/59/documents/prepare?type=${type}`);console.log(type,p.code,p.msg,JSON.stringify(p.data)?.slice(0,5000));}})();
