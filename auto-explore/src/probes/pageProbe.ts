@@ -14,6 +14,8 @@ export interface PageObservation {
   visibleTextSample: string;
   consoleErrors: string[];
   pageErrors: string[];
+  formErrors: string[];
+  toastTexts: string[];
   capturedAt: string;
 }
 
@@ -49,6 +51,20 @@ export class PageProbe {
     const heading = await page.locator("h1, h2, .app-breadcrumb, .ant-breadcrumb").first().innerText().catch(() => undefined);
     const bodyText = await page.locator("body").innerText().catch(() => "");
 
+    // Collect Ant Design form validation errors
+    const formErrors = await page
+      .locator(".ant-form-item-explain-error, .ant-form-item-with-help .ant-form-item-extra")
+      .allInnerTexts()
+      .catch(() => [] as string[])
+      .then((arr) => arr.map((s) => s.trim()).filter(Boolean));
+
+    // Collect Ant Design toast / message notifications
+    const toastTexts = await page
+      .locator(".ant-message span, .ant-message-notice-content, .ant-notification-notice-message")
+      .allInnerTexts()
+      .catch(() => [] as string[])
+      .then((arr) => arr.map((s) => s.trim()).filter(Boolean));
+
     return {
       url: page.url(),
       title: await page.title(),
@@ -58,13 +74,15 @@ export class PageProbe {
       visibleTextSample: bodyText.replace(/\s+/g, " ").slice(0, textSampleLength),
       consoleErrors: [...this.consoleErrors],
       pageErrors: [...this.pageErrors],
+      formErrors,
+      toastTexts,
       capturedAt: new Date().toISOString(),
     };
   }
 
   async fingerprint(page: Page): Promise<string> {
     const snapshot = await this.ariaSnapshot(page);
-    return simpleHash(snapshot + "|" + page.url());
+    return simpleHash(normalizeSnapshot(snapshot) + "|" + normalizeUrl(page.url()));
   }
 
   resetErrors(): void {
@@ -79,4 +97,45 @@ function simpleHash(input: string): string {
     hash = ((hash << 5) + hash + input.charCodeAt(index)) | 0;
   }
   return (hash >>> 0).toString(16);
+}
+
+/**
+ * Strip dynamic noise from an ariaSnapshot before hashing.
+ * A login page that embeds nonces, CSRF tokens, session IDs, or timestamps would
+ * otherwise produce a unique fingerprint on every visit even though the *structure*
+ * of the page is identical. We replace obvious variable-length tokens with placeholders
+ * so only stable structural content influences the hash.
+ */
+function normalizeSnapshot(snapshot: string): string {
+  let s = snapshot;
+  // UUID-style tokens: 8-4-4-4-12 hex
+  s = s.replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi, "<uuid>");
+  // Long hex strings (common for csrf / session tokens, >= 16 chars)
+  s = s.replace(/\b[0-9a-f]{16,}\b/gi, "<hex>");
+  // ISO timestamps / epoch-ish digits (>= 10 digits that look like time)
+  s = s.replace(/\b\d{10,19}\b/g, "<ts>");
+  // Base64-ish tokens (long strings with = padding or /+ chars, >= 20 chars)
+  s = s.replace(/\b[A-Za-z0-9+/]{20,}={0,2}\b/g, "<b64>");
+  // Collapse whitespace so incidental formatting noise doesn't change hash
+  s = s.replace(/\s+/g, " ").trim();
+  return s;
+}
+
+/**
+ * Normalize a URL before hashing so query parameters that are known to be
+ * volatile (timestamps, CSRF tokens, session redirects) don't fragment otherwise
+ * identical pages.
+ */
+function normalizeUrl(raw: string): string {
+  let url: URL;
+  try { url = new URL(raw); } catch { return raw.split("#")[0]; }
+
+  // Remove volatile query params whose value changes every request
+  const volatileKeys = new Set(["_t", "_", "t", "ts", "timestamp", "csrf", "csrf_token", "token", "nonce", "sid", "session", "auth", "sign", "signature", "expires", "redirect"]);
+  const kept = new URLSearchParams();
+  for (const [k, v] of url.searchParams) {
+    if (!volatileKeys.has(k.toLowerCase())) kept.append(k, v);
+  }
+  const searchStr = kept.toString();
+  return `${url.pathname}${searchStr ? "?" + searchStr : ""}`;
 }

@@ -1,0 +1,26 @@
+{
+  "id": "CHARTER-CUST-CONFLICT-007",
+  "title": "冲突复验：公司名称重复是否被拦截",
+  "priority": "P0-conflict",
+  "goal": "创建一家带 AUTO-DUP- 前缀的公司，然后再创建一家同名公司（同名第二次）。期望取证：静态分析认为应拦截唯一性检查但代码无此逻辑，验证两次是否都成功落库，获取运行时证据。",
+  "linkedReqIds": ["REQ-009"],
+  "linkedBrIds": ["BR-041"],
+  "linkedCaseIds": ["公司维护-007"],
+  "startUrl": "/customer",
+  "constraints": [
+    "新建公司名称使用 AUTO-DUP- 前缀，确保不与既有数据冲突",
+    "连续创建两次同名公司",
+    "操作完成后不删除数据，由环境重置处理"
+  ],
+  "oracleHints": [
+    { "kind": "api", "description": "观察到公司创建接口被调用（至少两次）", "expect": "/prop/customer/company" },
+    {
+      "kind": "db",
+      "description": "同名 AUTO-DUP- 公司创建前后的数量变化（预期：两次都成功则 added >= 2，第二次被拦截则 added = 1）",
+      "sql": "SELECT subject_id, subject_name FROM prop_customer_subject WHERE subject_name LIKE 'AUTO-DUP-%' AND subject_type='company'",
+      "keyField": "subject_id",
+      "expect": "changed >= 2"
+    }
+  ],
+  "maxSteps": 30
+}

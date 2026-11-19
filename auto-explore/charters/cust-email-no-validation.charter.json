@@ -1,0 +1,26 @@
+{
+  "id": "CHARTER-CUST-EMAIL-003",
+  "title": "冲突复验：邮箱格式无校验——非法格式邮箱随联系人正常落库",
+  "priority": "P0-conflict",
+  "goal": "新建公司时添加地址+联系人，邮箱填入非法格式（如 not-an-email），保存。期望取证：POST 接口成功、非法邮箱值随联系人落库。与用例 客户编辑-008 预期（应校验拦截）冲突，运行时取证验证哪个对。",
+  "linkedReqIds": ["REQ-012"],
+  "linkedBrIds": ["BR-039"],
+  "linkedCaseIds": ["客户编辑-008"],
+  "startUrl": "/customer",
+  "constraints": [
+    "新建公司名称必须带 AUTO-EMAIL- 前缀",
+    "邮箱填入非法格式 not-an-email",
+    "操作完成后不删除数据，由环境重置处理"
+  ],
+  "oracleHints": [
+    { "kind": "api", "description": "观察到公司创建接口被调用", "expect": "/prop/customer/company" },
+    {
+      "kind": "db",
+      "description": "检查最新联系人记录的邮箱字段，确认非法格式值落库",
+      "sql": "SELECT contact_id, email FROM prop_customer_contact ORDER BY contact_id DESC LIMIT 5",
+      "keyField": "contact_id",
+      "expect": "afterCount >= 1"
+    }
+  ],
+  "maxSteps": 20
+}

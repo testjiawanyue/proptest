@@ -1,0 +1,16 @@
+{
+  "id": "CHARTER-CUST-SMOKE-001",
+  "title": "冒烟：登录后客户管理列表页正常加载",
+  "priority": "P2-mainflow",
+  "goal": "登录系统，导航到客户管理，确认列表页渲染正常、无接口500、无页面未捕获异常。仅读操作。",
+  "linkedReqIds": ["REQ-001", "REQ-002"],
+  "linkedBrIds": [],
+  "linkedCaseIds": [],
+  "startUrl": "/customer",
+  "constraints": ["只读操作", "不得修改任何数据", "不得新建/删除/编辑任何客户/支店/地址"],
+  "oracleHints": [
+    { "kind": "ui-text", "description": "客户管理列表页渲染", "expect": "客户管理" },
+    { "kind": "api", "description": "观察到客户列表接口被调用", "expect": "/prop/customer/list" }
+  ],
+  "maxSteps": 8
+}

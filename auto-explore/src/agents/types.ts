@@ -15,14 +15,15 @@ export interface Charter {
 }
 
 export interface OracleHint {
-  kind: "api" | "db" | "ui-text";
+  kind: "api" | "db" | "ui-text" | "form-error" | "toast-text" | "no-api-call";
   description: string;
+  /** api/ui-text/form-error/toast-text: 期望包含的字符串；no-api-call: 不应被调用的路径片段；db: 可选，表示变化后数量应满足的条件（">0"/"===0"/">=N"） */
   expect?: string;
   sql?: string;
   keyField?: string;
 }
 
-export type VerdictLevel = "pass" | "fail" | "unconfirmed" | "off-baseline";
+export type VerdictLevel = "pass" | "fail" | "pending" | "unconfirmed" | "off-baseline";
 
 export interface StepRecord {
   stepIndex: number;
@@ -36,6 +37,8 @@ export interface StepRecord {
 
 export interface CharterResult {
   charterId: string;
+  /**  Charter.title —— 中文/日文可读的场景名，Reporter 里和 charterId 一起展示，方便快速对照测试功能。 */
+  charterTitle?: string;
   verdict: VerdictLevel;
   verdictReason: string;
   steps: StepRecord[];
@@ -44,6 +47,7 @@ export interface CharterResult {
     screenshots: string[];
     apiErrors: unknown[];
     dbDiffs: unknown[];
+    stateCoverage?: import("../state-graph/stateGraph.js").StateCoverage;
   };
   startedAt: string;
   finishedAt: string;

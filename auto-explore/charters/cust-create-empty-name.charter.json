@@ -1,0 +1,16 @@
+{
+  "id": "CHARTER-CUST-CREATE-002",
+  "title": "新建公司名称为空保存被拦截",
+  "priority": "P1-unconfirmed",
+  "goal": "打开新建公司对话框，不填公司名称，直接点击确定。期望：表单校验拦截、显示必填错误文案、未发起 POST /prop/customer/company 请求、弹窗保持打开。",
+  "linkedReqIds": ["REQ-009"],
+  "linkedBrIds": ["BR-037"],
+  "linkedCaseIds": ["公司维护-003"],
+  "startUrl": "/customer",
+  "constraints": ["仅读操作+表单交互", "不得保存成功"],
+  "oracleHints": [
+    { "kind": "form-error", "description": "公司名称必填校验文案出现", "expect": "会社名" },
+    { "kind": "no-api-call", "description": "校验失败不应发起创建请求", "expect": "/prop/customer/company" }
+  ],
+  "maxSteps": 10
+}

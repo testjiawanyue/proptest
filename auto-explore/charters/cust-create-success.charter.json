@@ -1,0 +1,29 @@
+{
+  "id": "CHARTER-CUST-CREATE-001",
+  "title": "新建公司成功：填入名称+基础信息+地址，保存后跳转详情页",
+  "priority": "P2-mainflow",
+  "goal": "在客户管理列表页新建公司，填写公司名称（AUTO- 前缀）、客户区分、至少一个地址（邮编+地址1）、至少一个联系人（姓名+电话），点击确定保存。期望：表单关闭、页面跳转详情页、POST 接口被调用、DB 新增公司+地址+联系人记录。",
+  "linkedReqIds": ["REQ-009"],
+  "linkedBrIds": ["BR-002"],
+  "linkedCaseIds": ["公司维护-002"],
+  "startUrl": "/customer",
+  "constraints": [
+    "新建公司名称必须带 AUTO-CREATE- 前缀",
+    "邮编使用合法7位数字",
+    "地址1使用非空字符串",
+    "联系人姓名+电话必填",
+    "操作完成后不删除数据，由环境重置处理"
+  ],
+  "oracleHints": [
+    { "kind": "api", "description": "观察到公司创建接口被调用", "expect": "/prop/customer/company" },
+    { "kind": "ui-text", "description": "保存后跳转详情页，显示公司信息", "expect": "会社情報" },
+    {
+      "kind": "db",
+      "description": "新建公司前后，AUTO-CREATE- 前缀的公司记录数量增加",
+      "sql": "SELECT subject_id, subject_name FROM prop_customer_subject WHERE subject_name LIKE 'AUTO-CREATE-%' AND subject_type='company'",
+      "keyField": "subject_id",
+      "expect": "added >= 1"
+    }
+  ],
+  "maxSteps": 20
+}
