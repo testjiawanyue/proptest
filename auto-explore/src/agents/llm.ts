@@ -82,6 +82,8 @@ export function buildUserPrompt(input: DecideInput): string {
     `URL：${observation.url}`,
     `标题：${observation.heading ?? observation.title}`,
     `可见文本摘要：${observation.visibleTextSample.slice(0, 400)}`,
+    `弹窗文本：${observation.dialogTexts.join(" | ").slice(0, 400) || "（无）"}`,
+    `提示消息：${observation.toastTexts.join(" | ").slice(0, 200) || "（无）"}`,
     `可交互元素：${observation.interactive.map((el) => `${el.role}:"${el.name}"`).join("、") || "（无）"}`,
     `页面异常：console错误${observation.consoleErrors.length}条，未捕获异常${observation.pageErrors.length}条`,
     "",

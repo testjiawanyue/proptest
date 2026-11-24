@@ -1,0 +1,1 @@
+exception_id,change_id,commit_sha,gate_id,check_id,severity,exception_type,reason,business_impact,compensating_control,revalidation_plan,owner,approved_by,created_at,expires_at,status,evidence_path

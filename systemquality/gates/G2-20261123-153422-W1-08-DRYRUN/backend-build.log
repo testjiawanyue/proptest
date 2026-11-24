@@ -1,0 +1,13 @@
+# command
+"D:\Maven\apache-maven-3.9.6\bin\mvn.cmd" --no-transfer-progress -q -pl ruoyi-admin -am -DskipTests install
+
+# exitCode
+1
+
+# stdout
+
+
+# stderr
+'\"D:\Maven\apache-maven-3.9.6\bin\mvn.cmd\"' is not recognized as an internal or external command,
+operable program or batch file.
+

@@ -1,0 +1,13 @@
+# command
+"D:\Nodejs\npm.cmd" run typecheck
+
+# exitCode
+1
+
+# stdout
+
+
+# stderr
+'\"D:\Nodejs\npm.cmd\"' is not recognized as an internal or external command,
+operable program or batch file.
+

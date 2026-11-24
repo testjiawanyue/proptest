@@ -1,0 +1,15 @@
+# command
+D:\Nodejs\npm.cmd run typecheck
+
+# exitCode
+0
+
+# stdout
+
+> bearjia-ui@1.3.0 typecheck
+> vue-tsc --noEmit -p tsconfig.typecheck.json
+
+
+
+# stderr
+

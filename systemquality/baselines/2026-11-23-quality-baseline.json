@@ -1,0 +1,604 @@
+{
+  "baselineId": "QB-2026-11-23-01",
+  "capturedAt": "2026-11-23T15:43:59+08:00",
+  "scope": "PROP 订单管理到寄送和面单试点及现有质量资产",
+  "mode": "read-only-static-snapshot",
+  "workbook": {
+    "file": {
+      "path": "E:\\proptest\\case\\outputs\\测试用例汇总\\测试用例汇总_V5.xlsx",
+      "sizeBytes": 684208,
+      "lastWriteTime": "2026-11-13T16:57:36.683942+08:00",
+      "sha256": "bf34a2c014c1ceb8f606c3a4c7af7e042ffc0857bf51abe980452d2c1ca0f64d"
+    },
+    "sheetCount": 19,
+    "sheetNames": [
+      "说明与变更",
+      "V3质量分析",
+      "基础设置",
+      "客户管理",
+      "产品生产",
+      "产品管理",
+      "订单管理",
+      "历史补录",
+      "点检管理",
+      "受付工作台",
+      "作业管理",
+      "首页看板",
+      "端到端补充用例",
+      "V5缺口补充用例",
+      "用例-需求映射",
+      "需求追溯矩阵",
+      "需求澄清清单",
+      "归并重构建议",
+      "基线规格"
+    ],
+    "businessSheetCount": 12,
+    "business": [
+      {
+        "sheet": "基础设置",
+        "effectiveRows": 106,
+        "statusCounts": {
+          "通过": 105,
+          "部分验证": 1
+        },
+        "priorityCounts": {
+          "高": 67,
+          "中": 38,
+          "低": 1
+        }
+      },
+      {
+        "sheet": "客户管理",
+        "effectiveRows": 114,
+        "statusCounts": {
+          "通过": 105,
+          "部分验证": 1,
+          "作废（需求不存在）": 4,
+          "阻塞（依赖模块未实现）": 3,
+          "未执行": 1
+        },
+        "priorityCounts": {
+          "高": 66,
+          "中": 43,
+          "低": 5
+        }
+      },
+      {
+        "sheet": "产品生产",
+        "effectiveRows": 86,
+        "statusCounts": {
+          "通过": 82,
+          "部分验证": 1,
+          "冲突确认": 2,
+          "阻塞（验收范围另记）": 1
+        },
+        "priorityCounts": {
+          "高": 45,
+          "中": 37,
+          "低": 4
+        }
+      },
+      {
+        "sheet": "产品管理",
+        "effectiveRows": 75,
+        "statusCounts": {
+          "通过": 67,
+          "部分验证": 5,
+          "不通过": 2,
+          "阻塞": 1
+        },
+        "priorityCounts": {
+          "高": 43,
+          "中": 25,
+          "低": 7
+        }
+      },
+      {
+        "sheet": "订单管理",
+        "effectiveRows": 148,
+        "statusCounts": {
+          "通过": 135,
+          "无需执行": 1,
+          "部分验证": 11,
+          "阻塞": 1
+        },
+        "priorityCounts": {
+          "高": 86,
+          "中": 55,
+          "低": 7
+        }
+      },
+      {
+        "sheet": "历史补录",
+        "effectiveRows": 92,
+        "statusCounts": {
+          "未执行": 92
+        },
+        "priorityCounts": {
+          "高": 92
+        }
+      },
+      {
+        "sheet": "点检管理",
+        "effectiveRows": 312,
+        "statusCounts": {
+          "未执行": 312
+        },
+        "priorityCounts": {
+          "高": 168,
+          "中": 121,
+          "低": 23
+        }
+      },
+      {
+        "sheet": "受付工作台",
+        "effectiveRows": 212,
+        "statusCounts": {
+          "未执行": 212
+        },
+        "priorityCounts": {
+          "高": 90,
+          "中": 94,
+          "低": 28
+        }
+      },
+      {
+        "sheet": "作业管理",
+        "effectiveRows": 164,
+        "statusCounts": {
+          "未执行": 164
+        },
+        "priorityCounts": {
+          "高": 109,
+          "中": 45,
+          "低": 10
+        }
+      },
+      {
+        "sheet": "首页看板",
+        "effectiveRows": 59,
+        "statusCounts": {
+          "未执行": 59
+        },
+        "priorityCounts": {
+          "高": 47,
+          "低": 3,
+          "中": 9
+        }
+      },
+      {
+        "sheet": "端到端补充用例",
+        "effectiveRows": 20,
+        "statusCounts": {
+          "未执行": 20
+        },
+        "priorityCounts": {
+          "高": 20
+        }
+      },
+      {
+        "sheet": "V5缺口补充用例",
+        "effectiveRows": 47,
+        "statusCounts": {
+          "未执行": 47
+        },
+        "priorityCounts": {
+          "高": 47
+        }
+      }
+    ],
+    "totals": {
+      "effectiveRows": 1435,
+      "statusCounts": {
+        "通过": 494,
+        "部分验证": 19,
+        "作废（需求不存在）": 4,
+        "阻塞（依赖模块未实现）": 3,
+        "未执行": 907,
+        "冲突确认": 2,
+        "阻塞（验收范围另记）": 1,
+        "不通过": 2,
+        "阻塞": 2,
+        "无需执行": 1
+      },
+      "priorityCounts": {
+        "高": 880,
+        "中": 467,
+        "低": 88
+      },
+      "priorityStatus": {
+        "高": {
+          "通过": 289,
+          "部分验证": 12,
+          "阻塞（依赖模块未实现）": 2,
+          "作废（需求不存在）": 1,
+          "未执行": 574,
+          "阻塞（验收范围另记）": 1,
+          "不通过": 1
+        },
+        "中": {
+          "通过": 184,
+          "部分验证": 6,
+          "作废（需求不存在）": 3,
+          "冲突确认": 2,
+          "不通过": 1,
+          "阻塞": 1,
+          "无需执行": 1,
+          "未执行": 269
+        },
+        "低": {
+          "通过": 21,
+          "阻塞（依赖模块未实现）": 1,
+          "部分验证": 1,
+          "阻塞": 1,
+          "未执行": 64
+        }
+      },
+      "passCount": 494,
+      "passRate": 0.344251,
+      "notExecutedCount": 907,
+      "notExecutedRate": 0.632056,
+      "highPriorityTotal": 880,
+      "highPriorityPassCount": 289,
+      "highPriorityPassRate": 0.328409,
+      "highPriorityNotExecutedCount": 574,
+      "highPriorityNotExecutedRate": 0.652273
+    },
+    "mapping": {
+      "rowCount": 2259,
+      "distinctCaseIds": 1442
+    },
+    "traceability": {
+      "requirementRowCount": 330
+    },
+    "clarification": {
+      "rowCount": 88
+    },
+    "baselineSpec": {
+      "rowCount": 9
+    },
+    "interpretation": "执行状态来自 V5 工作簿快照，不代表本次重新执行了测试。"
+  },
+  "testAssets": {
+    "backendFiles": 97,
+    "backendTestAnnotations": 940,
+    "backendParameterizedAnnotations": 5,
+    "backendDisabledAnnotations": 0,
+    "backendTestMethodApprox": 945,
+    "frontendFiles": 44,
+    "frontendTestCallOccurrences": 920,
+    "frontendItCallOccurrences": 0,
+    "frontendSkippedCallOccurrences": 0,
+    "note": "文件数可复现；方法/调用数为源码文本静态计数，不等同于实际执行数。"
+  },
+  "aiTest": {
+    "totalFiles": 137,
+    "stageCounts": {
+      "01-requirement": {
+        "files": 1,
+        "latestWriteTime": "2026-10-20T13:53:01.893169+08:00"
+      },
+      "02-code-analysis": {
+        "files": 8,
+        "latestWriteTime": "2026-11-19T13:34:03.415787+08:00"
+      },
+      "03-testcase": {
+        "files": 3,
+        "latestWriteTime": "2026-10-20T14:09:24.359865+08:00"
+      },
+      "04-validation": {
+        "files": 19,
+        "latestWriteTime": "2026-11-19T13:34:59.783527+08:00"
+      },
+      "05-report": {
+        "files": 1,
+        "latestWriteTime": "2026-09-30T15:14:59.134643+08:00"
+      }
+    },
+    "extensionCounts": {
+      ".txt": 43,
+      ".md": 48,
+      ".xlsx": 1,
+      ".py": 40,
+      ".json": 3,
+      ".pyc": 2
+    }
+  },
+  "autoExplore": {
+    "batchCount": 15,
+    "resultCount": 78,
+    "verdictCounts": {
+      "pass": 32,
+      "unconfirmed": 33,
+      "pending": 13
+    },
+    "passRate": 0.410256,
+    "unconfirmedRate": 0.423077,
+    "pendingRate": 0.166667,
+    "latestGeneratedAt": "2026-11-19T03:32:41.106Z",
+    "batches": [
+      {
+        "file": "batch-2026-11-19T03-32-41.json",
+        "generatedAt": "2026-11-19T03:32:41.106Z",
+        "resultCount": 1,
+        "verdicts": {
+          "pass": 1
+        },
+        "charters": [
+          "CHARTER-PROD-FLOW-QC-NO-REVERT-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-19T03-32-05.json",
+        "generatedAt": "2026-11-19T03:32:05.495Z",
+        "resultCount": 1,
+        "verdicts": {
+          "pass": 1
+        },
+        "charters": [
+          "CHARTER-PROD-FLOW-JACKET-REPLACE-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-19T03-31-07.json",
+        "generatedAt": "2026-11-19T03:31:07.169Z",
+        "resultCount": 4,
+        "verdicts": {
+          "pass": 2,
+          "unconfirmed": 2
+        },
+        "charters": [
+          "CHARTER-PROD-FLOW-DELETE-BLOCK-001",
+          "CHARTER-PROD-FLOW-JACKET-REPLACE-001",
+          "CHARTER-PROD-FLOW-QC-NO-REVERT-001",
+          "CHARTER-PROD-FLOW-STORAGE-PATH-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-18T10-08-33.json",
+        "generatedAt": "2026-11-18T10:08:33.931Z",
+        "resultCount": 6,
+        "verdicts": {
+          "pending": 2,
+          "unconfirmed": 2,
+          "pass": 2
+        },
+        "charters": [
+          "CHARTER-CUST-CONFLICT-007",
+          "CHARTER-CUST-EMAIL-003",
+          "CHARTER-CUST-CREATE-002",
+          "CHARTER-CUST-CREATE-001",
+          "CHARTER-CUST-SMOKE-001",
+          "CHARTER-SMOKE-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-18T09-49-23.json",
+        "generatedAt": "2026-11-18T09:49:23.939Z",
+        "resultCount": 6,
+        "verdicts": {
+          "unconfirmed": 2,
+          "pass": 3,
+          "pending": 1
+        },
+        "charters": [
+          "CHARTER-CUST-EMAIL-003",
+          "CHARTER-CUST-CONFLICT-007",
+          "CHARTER-CUST-CREATE-002",
+          "CHARTER-CUST-CREATE-001",
+          "CHARTER-CUST-SMOKE-001",
+          "CHARTER-SMOKE-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-18T09-30-50.json",
+        "generatedAt": "2026-11-18T09:30:50.881Z",
+        "resultCount": 6,
+        "verdicts": {
+          "unconfirmed": 3,
+          "pass": 3
+        },
+        "charters": [
+          "CHARTER-CUST-EMAIL-003",
+          "CHARTER-CUST-CONFLICT-007",
+          "CHARTER-CUST-CREATE-002",
+          "CHARTER-CUST-CREATE-001",
+          "CHARTER-CUST-SMOKE-001",
+          "CHARTER-SMOKE-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-18T09-22-08.json",
+        "generatedAt": "2026-11-18T09:22:08.620Z",
+        "resultCount": 6,
+        "verdicts": {
+          "pending": 1,
+          "pass": 3,
+          "unconfirmed": 2
+        },
+        "charters": [
+          "CHARTER-CUST-EMAIL-003",
+          "CHARTER-CUST-CONFLICT-007",
+          "CHARTER-CUST-CREATE-002",
+          "CHARTER-CUST-CREATE-001",
+          "CHARTER-CUST-SMOKE-001",
+          "CHARTER-SMOKE-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-18T08-48-05.json",
+        "generatedAt": "2026-11-18T08:48:05.139Z",
+        "resultCount": 6,
+        "verdicts": {
+          "unconfirmed": 1,
+          "pass": 3,
+          "pending": 2
+        },
+        "charters": [
+          "CHARTER-CUST-EMAIL-003",
+          "CHARTER-CUST-CONFLICT-007",
+          "CHARTER-CUST-CREATE-002",
+          "CHARTER-CUST-CREATE-001",
+          "CHARTER-CUST-SMOKE-001",
+          "CHARTER-SMOKE-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-18T08-40-51.json",
+        "generatedAt": "2026-11-18T08:40:51.660Z",
+        "resultCount": 6,
+        "verdicts": {
+          "unconfirmed": 1,
+          "pass": 2,
+          "pending": 3
+        },
+        "charters": [
+          "CHARTER-CUST-EMAIL-003",
+          "CHARTER-CUST-CONFLICT-007",
+          "CHARTER-CUST-CREATE-002",
+          "CHARTER-CUST-CREATE-001",
+          "CHARTER-CUST-SMOKE-001",
+          "CHARTER-SMOKE-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-18T08-32-31.json",
+        "generatedAt": "2026-11-18T08:32:31.463Z",
+        "resultCount": 6,
+        "verdicts": {
+          "pending": 4,
+          "pass": 1,
+          "unconfirmed": 1
+        },
+        "charters": [
+          "CHARTER-CUST-EMAIL-003",
+          "CHARTER-CUST-CONFLICT-007",
+          "CHARTER-CUST-CREATE-002",
+          "CHARTER-CUST-CREATE-001",
+          "CHARTER-CUST-SMOKE-001",
+          "CHARTER-SMOKE-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-18T08-11-52.json",
+        "generatedAt": "2026-11-18T08:11:52.547Z",
+        "resultCount": 6,
+        "verdicts": {
+          "unconfirmed": 5,
+          "pass": 1
+        },
+        "charters": [
+          "CHARTER-CUST-EMAIL-003",
+          "CHARTER-CUST-CONFLICT-007",
+          "CHARTER-CUST-CREATE-002",
+          "CHARTER-CUST-CREATE-001",
+          "CHARTER-CUST-SMOKE-001",
+          "CHARTER-SMOKE-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-18T07-43-41.json",
+        "generatedAt": "2026-11-18T07:43:41.088Z",
+        "resultCount": 6,
+        "verdicts": {
+          "unconfirmed": 3,
+          "pass": 3
+        },
+        "charters": [
+          "CHARTER-CUST-EMAIL-003",
+          "CHARTER-CUST-CONFLICT-007",
+          "CHARTER-CUST-CREATE-002",
+          "CHARTER-CUST-CREATE-001",
+          "CHARTER-CUST-SMOKE-001",
+          "CHARTER-SMOKE-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-18T07-29-37.json",
+        "generatedAt": "2026-11-18T07:29:37.078Z",
+        "resultCount": 6,
+        "verdicts": {
+          "unconfirmed": 3,
+          "pass": 3
+        },
+        "charters": [
+          "CHARTER-CUST-EMAIL-003",
+          "CHARTER-CUST-CONFLICT-007",
+          "CHARTER-CUST-CREATE-002",
+          "CHARTER-CUST-CREATE-001",
+          "CHARTER-CUST-SMOKE-001",
+          "CHARTER-SMOKE-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-17T10-16-41.json",
+        "generatedAt": "2026-11-17T10:16:41.246Z",
+        "resultCount": 6,
+        "verdicts": {
+          "unconfirmed": 3,
+          "pass": 3
+        },
+        "charters": [
+          "CHARTER-CUST-EMAIL-003",
+          "CHARTER-CUST-CONFLICT-007",
+          "CHARTER-CUST-CREATE-002",
+          "CHARTER-CUST-CREATE-001",
+          "CHARTER-CUST-SMOKE-001",
+          "CHARTER-SMOKE-001"
+        ]
+      },
+      {
+        "file": "batch-2026-11-17T10-06-25.json",
+        "generatedAt": "2026-11-17T10:06:25.961Z",
+        "resultCount": 6,
+        "verdicts": {
+          "unconfirmed": 5,
+          "pass": 1
+        },
+        "charters": [
+          "CHARTER-CUST-EMAIL-003",
+          "CHARTER-CUST-CONFLICT-007",
+          "CHARTER-CUST-CREATE-002",
+          "CHARTER-CUST-CREATE-001",
+          "CHARTER-CUST-SMOKE-001",
+          "CHARTER-SMOKE-001"
+        ]
+      }
+    ],
+    "interpretation": "最近 15 个批次是历史快照，不代表本次重新执行。"
+  },
+  "project": {
+    "git": {
+      "branch": "main",
+      "commit": "7e28ef9639ef4562341c58d6bc5de3630d60cb95",
+      "commitTime": "2026-11-16T13:21:22+08:00",
+      "statusShort": "M ruoyi-ui/config/eslint/.eslintrc-auto-import.json\n M ruoyi-ui/package.json\n M ruoyi-ui/src/types/auto-imports.d.ts\n M ruoyi-ui/src/types/components.d.ts\n M ruoyi-ui/tests/c01-c02-recovery-followup.test.mjs\n?? sql/cleanup_auto_test_data.sql\n?? sql/clear_all_prop_data.sql",
+      "dirtyFileCount": 7,
+      "isClean": false,
+      "baselineNote": "基线采集时工作区已有变更；不得归因于质量体系采集。"
+    },
+    "ci": {
+      "Jenkinsfile": false,
+      ".gitlab-ci.yml": false,
+      "azure-pipelines.yml": false,
+      "bitbucket-pipelines.yml": false,
+      "githubWorkflows": [],
+      "detected": false
+    }
+  },
+  "evidence": {
+    "formalPackageCount": 0,
+    "templateExists": true
+  },
+  "qualityGaps": [
+    "未发现持续集成配置。",
+    "不存在正式变更证据包。",
+    "V5 中大量用例仍未执行。",
+    "自动探索结果不能直接作为硬门禁。"
+  ],
+  "reproduction": {
+    "script": "E:\\proptest\\systemquality\\tools\\capture_w1_baseline.py",
+    "python": "3.12.13",
+    "note": "只读采集，不执行构建、测试或数据库写入。"
+  }
+}

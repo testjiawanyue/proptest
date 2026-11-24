@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "G2-20261123-153435-W1-08-DRYRUN-02",
+  "changeId": "W1-08-DRYRUN-02",
+  "commit": "7e28ef9639ef4562341c58d6bc5de3630d60cb95",
+  "environmentFingerprint": "22b04e2e67dbabd47ef7e121f033d15f3ba16315ddb9d185fa86cd49b18115ce",
+  "mode": "shadow",
+  "classifiedAt": "2026-11-23T15:45:50+08:00",
+  "sourceGate": "gate-results.json",
+  "sourceHashes": {
+    "backend-test.log": "940e7d73af18cf402370b4d0b7c0537284673c118b6e61ea35cee6550ee4f3ba",
+    "surefire-reports": "750da8d393d3b52fc7f7e0a4b064743b3211a56c113653c0269a3948dd42e9f8",
+    "frontend-lint.log": "3d7856cdf31753cb1b328f092c3604da6c1e250ce20f74c1f6b64d4f20eb191d",
+    "frontend-test.log": "04bd233a79bfa17e23bfb37d13fc8ad6da7b08264757120b0f89ea64bc7df78c"
+  },
+  "conclusion": {
+    "overallStatus": "fail",
+    "failedChecks": 3,
+    "confirmedBusinessDefects": 0,
+    "note": "首轮分类未确认业务缺陷，不等于不存在业务缺陷；triage-required 项仍需负责人复核。",
+    "gateRecommendation": "continue-shadow"
+  },
+  "checks": [
+    {
+      "id": "backend-test",
+      "failureClass": "environment/tool",
+      "subtype": "template-resource-line-ending",
+      "confidence": "high",
+      "status": "confirmed-root-cause-with-triage-items",
+      "owner": "张树旸",
+      "reviewer": "贾婉月",
+      "metrics": {
+        "tests": 1000,
+        "failures": 9,
+        "errors": 139,
+        "surefireReports": 71,
+        "templateRelatedMessageOccurrences": 169
+      },
+      "evidence": [
+        "Maven/Surefire 汇总为 1000 个测试、9 个失败、139 个错误。",
+        "Surefire 报告中出现 169 次模板完整性、校验和或模板不可用类消息。",
+        "recovery-reports/v1 的原始文件哈希不匹配清单，但将 CRLF 归一化为 LF 后与 manifest 哈希一致。",
+        "Git 配置 core.autocrlf=true，模板资源在 Windows 工作区被转换为 CRLF。",
+        "Surefire 报告聚合摘要：750da8d393d3b52fc7f7e0a4b064743b3211a56c113653c0269a3948dd42e9f8。"
+      ],
+      "triageSignals": [
+        "PropNoticeMapperTest 绑定 SQL 数量断言 32 != 34",
+        "Windows 临时目录 private 文件系统权限异常",
+        "PropNoticeServiceTest 布尔事实断言失败，需确认是否模板问题级联",
+        "PackageRecordServiceTest 事务计数断言失败，疑似模板校验失败级联"
+      ],
+      "recommendedAction": [
+        "优先按受控变更修复模板资源字节稳定性，避免仅修改测试期望。",
+        "对与 CRLF 无关的断言和文件系统异常单独复跑并登记负责人。",
+        "修复前保持 G2 影子模式，不以本结果直接判定业务代码不合格。"
+      ]
+    },
+    {
+      "id": "frontend-lint",
+      "failureClass": "code/style",
+      "subtype": "crlf-line-ending",
+      "confidence": "high",
+      "status": "confirmed-format-baseline",
+      "owner": "张树旸",
+      "reviewer": "贾婉月",
+      "metrics": {
+        "problems": 11902,
+        "errors": 11902,
+        "warnings": 0,
+        "prettierFindings": 11902,
+        "deleteCrFindings": 11902,
+        "distinctFiles": 108
+      },
+      "evidence": [
+        "11902 条问题全部来自 prettier/prettier。",
+        "11902 条问题均要求删除 CR 字符。",
+        "尚未发现其他 ESLint 规则失败，当前 Lint 失败不能直接解释为业务逻辑缺陷。"
+      ],
+      "triageSignals": [],
+      "recommendedAction": [
+        "先建立行尾策略和全量格式化基线，再切换为增量或全量硬门禁。",
+        "不要把一次全仓库 CRLF 修复与业务变更混在同一提交。",
+        "硬门禁前至少完成一次干净工作树的全量 Lint 验证。"
+      ]
+    },
+    {
+      "id": "frontend-test",
+      "failureClass": "existing-baseline",
+      "subtype": "test-harness-and-localization",
+      "confidence": "medium",
+      "status": "triage-required",
+      "owner": "贾婉月",
+      "reviewer": "张树旸",
+      "metrics": {
+        "tests": 999,
+        "pass": 971,
+        "fail": 28,
+        "identifiedFailureLocations": 27,
+        "errorTypes": {
+          "ReferenceError": 5,
+          "TypeError": 5,
+          "SyntaxError": 3,
+          "AssertionError": 15
+        },
+        "failureFiles": {
+          "tests/business-time-system-pages.test.mjs": 1,
+          "tests/c01-c02-recovery-followup.test.mjs": 14,
+          "tests/prop-dashboard.test.mjs": 2,
+          "tests/prop-return.test.mjs": 2,
+          "tests/prop-work-presentation.test.mjs": 1,
+          "tests/prop-work.test.mjs": 4,
+          "tests/uj2-presentation.test.mjs": 3
+        }
+      },
+      "evidence": [
+        "Node Test 汇总为 999 个测试、971 个通过、28 个失败。",
+        "失败集中在测试夹具依赖注入、日文/中文文案期望、Vue 模板函数注入和动态 Function 参数解析。",
+        "package.json 的 test 脚本和 c01-c02 测试夹具存在未提交改动，结果不能只归因于当前提交。",
+        "日志包含 foldInputWidth 未定义、monthLabel 非函数、Arg string terminates parameters early 等测试运行错误。"
+      ],
+      "triageSignals": [
+        "prop-dashboard 测试存在 productId 未定义读取，需确认夹具或业务行为",
+        "prop-dashboard 的 inspected/uninspected 断言相反，需业务裁定"
+      ],
+      "recommendedAction": [
+        "先固定测试夹具和语言环境，再判断断言差异是否代表产品缺陷。",
+        "对无法在本周修复的既有失败建立带负责人、到期日和复验条件的失败基线。",
+        "硬门禁只纳入稳定测试集，新增失败单独告警阻断。"
+      ]
+    }
+  ]
+}

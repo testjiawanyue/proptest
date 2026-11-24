@@ -1,0 +1,406 @@
+{
+  "version": "1.5",
+  "updatedAt": "2026-11-23T15:50:00+08:00",
+  "currentPhase": "阶段 1：影子运行准备与失败基线修复",
+  "currentWeek": 1,
+  "pilotScope": "订单管理到寄送和面单",
+  "overallStatus": "in-progress",
+  "tasks": [
+    {
+      "id": "W1-01",
+      "name": "确认试点范围和责任人",
+      "status": "completed",
+      "owner": "贾婉月",
+      "dueDate": "2026-11-23",
+      "output": "00-责任人与审批台账.md",
+      "blocker": "",
+      "completedAt": "2026-11-23"
+    },
+    {
+      "id": "W1-02",
+      "name": "固化 V5、测试资产和自动探索基线",
+      "status": "completed",
+      "owner": "贾婉月",
+      "dueDate": "2026-11-24",
+      "output": "baselines/2026-11-23-quality-baseline.json",
+      "blocker": "",
+      "startedAt": "2026-11-23",
+      "completedAt": "2026-11-23"
+    },
+    {
+      "id": "W1-03",
+      "name": "固定工具版本和环境指纹",
+      "status": "completed",
+      "owner": "张树旸",
+      "dueDate": "2026-11-24",
+      "output": "08-W1-03环境基线与运行态复验.md；environments/2026-11-23-environment-fingerprint.json",
+      "blocker": "",
+      "startedAt": "2026-11-23",
+      "completedAt": "2026-11-23"
+    },
+    {
+      "id": "W1-04",
+      "name": "确认 G0-G5 首轮模式",
+      "status": "completed",
+      "owner": "贾婉月、张树旸",
+      "dueDate": "2026-11-25",
+      "output": "09-W1-04首轮门禁模式表.md；quality-gates.json#rollout",
+      "blocker": "",
+      "startedAt": "2026-11-23",
+      "completedAt": "2026-11-23"
+    },
+    {
+      "id": "W1-05",
+      "name": "确定条件通过和豁免规则",
+      "status": "completed",
+      "owner": "贾婉月",
+      "dueDate": "2026-11-25",
+      "output": "10-W1-05条件通过与豁免审批规则.md；exception-register.csv；quality-gates.json#exceptionPolicy",
+      "blocker": "",
+      "startedAt": "2026-11-23",
+      "completedAt": "2026-11-23"
+    },
+    {
+      "id": "W1-06",
+      "name": "创建首个变更证据包样例",
+      "status": "blocked",
+      "owner": "张树旸",
+      "dueDate": "2026-11-26",
+      "output": "evidence/<变更号>/",
+      "blocker": "首个真实变更号和提交号尚未确定"
+    },
+    {
+      "id": "W1-07",
+      "name": "定义订单到寄送首批业务 Oracle",
+      "status": "completed",
+      "owner": "贾婉月、张树旸",
+      "dueDate": "2026-11-26",
+      "output": "11-W1-07订单到寄送业务Oracle.md；oracles/order-shipment-oracles.json",
+      "blocker": "",
+      "startedAt": "2026-11-23",
+      "completedAt": "2026-11-23"
+    },
+    {
+      "id": "W1-08",
+      "name": "设计 G2 影子编排命令和失败分类",
+      "status": "completed",
+      "owner": "张树旸",
+      "dueDate": "2026-11-27",
+      "output": "tools/g2_shadow_orchestrator.py；tools/classify_g2_failures.py；12-W1-08-G2影子编排与失败分类.md；gates/G2-20261123-153435-W1-08-DRYRUN-02/gate-results.json",
+      "blocker": "",
+      "startedAt": "2026-11-23",
+      "completedAt": "2026-11-23"
+    },
+    {
+      "id": "W1-09",
+      "name": "首周复盘并决定第 2 周是否进入影子运行",
+      "status": "blocked",
+      "owner": "贾婉月",
+      "dueDate": "2026-11-29",
+      "output": "首周复盘记录",
+      "blocker": "依赖 W1-06 真实变更证据包和 W2-05 干净工作树复验结果"
+    }
+  ],
+  "responsibilitySource": "00-责任人与审批台账.md",
+  "responsibility": {
+    "质量负责人": {
+      "name": "贾婉月",
+      "status": "confirmed"
+    },
+    "平台负责人": {
+      "name": "张树旸",
+      "status": "confirmed"
+    },
+    "订单链路负责人": {
+      "name": "贾婉月",
+      "status": "confirmed"
+    },
+    "业务负责人": {
+      "name": "张树旸",
+      "status": "confirmed"
+    },
+    "安全接口人": {
+      "name": "张树旸",
+      "status": "confirmed"
+    },
+    "开发负责人": {
+      "name": "张树旸",
+      "status": "confirmed"
+    },
+    "发布负责人": {
+      "name": "李旸",
+      "status": "confirmed"
+    },
+    "运维或SRE负责人": {
+      "name": "李旸",
+      "status": "confirmed"
+    }
+  },
+  "unassignedRoles": [],
+  "nextActions": [
+    "W1-06：提供首个真实变更号和提交号后，由张树旸创建证据包，贾婉月复核。",
+    "W2-01：修复模板资源 CRLF 与 manifest 哈希不一致，负责人张树旸，复核人贾婉月。",
+    "W2-02：建立前端行尾与格式化基线，负责人张树旸，复核人贾婉月。",
+    "W2-03：修复前端测试夹具、语言环境和动态注入问题，负责人贾婉月，技术支持张树旸。",
+    "W2-05：在干净工作树上连续执行两次 G2，再由贾婉月决定是否进入第 2 周影子运行。",
+    "在自动探索扩大写入范围前补齐 APP_ENV_FINGERPRINT、数据库种子与重置方式、角色账号矩阵。",
+    "W2-06：数据库种子、账号矩阵和 APP_ENV_FINGERPRINT 补齐后，执行首批订单到寄送 Oracle。"
+  ],
+  "gateOwnership": {
+    "G0": {
+      "owner": "张树旸",
+      "basis": "业务负责人承接产品与需求责任",
+      "coverage": "covered"
+    },
+    "G1": {
+      "owner": "张树旸",
+      "basis": "开发负责人承接架构与接口设计",
+      "coverage": "covered"
+    },
+    "G2": {
+      "owner": "张树旸",
+      "basis": "开发负责人负责执行和修复闭环",
+      "coverage": "covered"
+    },
+    "G3": {
+      "owner": "贾婉月",
+      "coverage": "covered"
+    },
+    "G4": {
+      "owner": "贾婉月",
+      "coverage": "covered"
+    },
+    "G5": {
+      "owner": "李旸",
+      "coverage": "covered"
+    }
+  },
+  "gateCoverageSummary": {
+    "covered": [
+      "G0",
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G5"
+    ],
+    "partial": [],
+    "uncovered": [],
+    "note": "全部门禁已有最终责任人；张树旸兼岗较多，必须执行开发、质量复核和发布确认三权分离。"
+  },
+  "dualRoleControls": [
+    "张树旸执行的开发变更必须由工具重新生成 G2 证据。",
+    "G3/G4 由贾婉月独立复核证据和业务结论。",
+    "G5 由李旸确认发布、灰度和回滚条件，张树旸不得自行放行。"
+  ],
+  "artifacts": {
+    "qualityBaselineJson": "E:\\proptest\\systemquality\\baselines\\2026-11-23-quality-baseline.json",
+    "qualityBaselineMarkdown": "E:\\proptest\\systemquality\\baselines\\2026-11-23-quality-baseline.md",
+    "environmentFingerprintJson": "E:\\proptest\\systemquality\\environments\\2026-11-23-environment-fingerprint.json",
+    "environmentFingerprintMarkdown": "E:\\proptest\\systemquality\\environments\\2026-11-23-environment-fingerprint.md",
+    "informationChecklist": "E:\\proptest\\systemquality\\07-基线与环境信息补齐清单.md",
+    "captureScript": "E:\\proptest\\systemquality\\tools\\capture_w1_baseline.py",
+    "metricsBaselineSnapshot": "E:\\proptest\\systemquality\\baselines\\2026-11-23-metrics-baseline.csv",
+    "metricsBaselineSource": "E:\\proptest\\systemquality\\metrics-baseline.csv",
+    "metricsBaseline": "E:\\proptest\\systemquality\\metrics-baseline.csv",
+    "environmentRuntimeVerification": "E:\\proptest\\systemquality\\08-W1-03环境基线与运行态复验.md",
+    "gateModeTable": "E:\\proptest\\systemquality\\09-W1-04首轮门禁模式表.md",
+    "exceptionPolicy": "E:\\proptest\\systemquality\\10-W1-05条件通过与豁免审批规则.md",
+    "exceptionRegister": "E:\\proptest\\systemquality\\exception-register.csv",
+    "backendJdk17Launcher": "E:\\proptest\\systemquality\\tools\\start-backend-jdk17.ps1",
+    "g2FailureClassification": "E:\\proptest\\systemquality\\gates\\G2-20261123-153435-W1-08-DRYRUN-02\\failure-classification.json",
+    "g2Results": "E:\\proptest\\systemquality\\gates\\G2-20261123-153435-W1-08-DRYRUN-02\\gate-results.json",
+    "oracleJson": "E:\\proptest\\systemquality\\oracles\\order-shipment-oracles.json",
+    "g2RunDirectory": "E:\\proptest\\systemquality\\gates\\G2-20261123-153435-W1-08-DRYRUN-02",
+    "w1_08Report": "E:\\proptest\\systemquality\\12-W1-08-G2影子编排与失败分类.md",
+    "oracleDocument": "E:\\proptest\\systemquality\\11-W1-07订单到寄送业务Oracle.md",
+    "g2Orchestrator": "E:\\proptest\\systemquality\\tools\\g2_shadow_orchestrator.py",
+    "g2FailureClassifier": "E:\\proptest\\systemquality\\tools\\classify_g2_failures.py"
+  },
+  "baselineSummary": {
+    "v5BusinessRows": 1435,
+    "v5PassCount": 494,
+    "v5NotExecutedCount": 907,
+    "highPriorityRows": 880,
+    "highPriorityPassCount": 289,
+    "highPriorityNotExecutedCount": 574,
+    "backendTestFiles": 97,
+    "frontendTestFiles": 44,
+    "autoExploreBatches": 15,
+    "autoExploreResults": 78
+  },
+  "environmentReadiness": {
+    "status": "captured",
+    "capturedAt": "2026-11-23T15:43:59+08:00",
+    "environmentFingerprint": "22b04e2e67dbabd47ef7e121f033d15f3ba16315ddb9d185fa86cd49b18115ce",
+    "checkedServices": 4,
+    "requiredServices": 4,
+    "reachableServices": 4,
+    "frontend": {
+      "host": "127.0.0.1",
+      "port": 8090,
+      "reachable": true
+    },
+    "backend": {
+      "host": "127.0.0.1",
+      "port": 8080,
+      "reachable": true,
+      "java": "17.0.2"
+    },
+    "mysql": {
+      "host": "127.0.0.1",
+      "port": 13306,
+      "reachable": true,
+      "version": "5.7.36",
+      "tables": 84
+    },
+    "redis": {
+      "host": "127.0.0.1",
+      "port": 16379,
+      "reachable": true
+    },
+    "viteDefaultPort": {
+      "port": 3000,
+      "required": false,
+      "reachable": false,
+      "note": "当前入口为 env/.env.dev 的 8090，3000 不构成缺口"
+    },
+    "blockingGaps": [],
+    "residualRisks": [
+      "auto-explore 未配置 APP_ENV_FINGERPRINT，当前防误连主要依赖 local/private 主机限制和人工复核",
+      "prop_new 工作区存在既有未提交改动，环境指纹绑定到当前提交但不代表工作树干净"
+    ],
+    "schemaDigest": "c51a3f1d65fcce05d5762d393b7e0bb5b2e95150a2962941988fcd56eb7b4ead",
+    "lastVerification": "2026-11-23 15:43:59 重新采集：四个必需端口 4/4 可达，前端/后端/验证码 HTTP 200，JDK 17，环境指纹未变化"
+  },
+  "metricsMerge": {
+    "status": "completed",
+    "mergedAt": "2026-11-23T15:14:39+08:00",
+    "sourceSnapshot": "E:\\proptest\\systemquality\\baselines\\2026-11-23-metrics-baseline.csv",
+    "targetFile": "E:\\proptest\\systemquality\\metrics-baseline.csv",
+    "rowCount": 16,
+    "sha256Before": "697326fdbc09a967558a265586efb4e68b0c3d891c7c0b610615f13de323300c",
+    "sha256After": "0c71feaf122d548727b17e9a1cdc05a62cb1ed2ed39c09f23abb8a68ab4806c2"
+  },
+  "gateModes": {
+    "G0": "shadow",
+    "G1": "shadow",
+    "G2": "shadow-deterministic",
+    "G3": "shadow",
+    "G4": "manual-blocking-with-automatic-shadow",
+    "G5": "manual-blocking-with-automatic-shadow",
+    "source": "09-W1-04首轮门禁模式表.md"
+  },
+  "exceptionPolicy": {
+    "status": "confirmed",
+    "source": "10-W1-05条件通过与豁免审批规则.md",
+    "register": "exception-register.csv",
+    "p0WaiverAllowed": false,
+    "waiverRateThreshold": 0.05
+  },
+  "runtimeDecisions": {
+    "java": {
+      "baseline": "17",
+      "actual": "17.0.2",
+      "status": "aligned",
+      "decision": "采用 JDK 17，当前已切换并复验"
+    },
+    "frontendPort": {
+      "baseline": 8090,
+      "source": "ruoyi-ui/env/.env.dev",
+      "viteDefault3000Used": false
+    },
+    "timezone": {
+      "jvm": "Asia/Tokyo",
+      "jdbc": "+09:00"
+    },
+    "autoExplore": {
+      "mode": "shadow",
+      "hardGate": false,
+      "environmentFingerprintConfigured": false
+    }
+  },
+  "latestG2Run": {
+    "runId": "G2-20261123-153435-W1-08-DRYRUN-02",
+    "changeId": "W1-08-DRYRUN-02",
+    "mode": "shadow",
+    "overallStatus": "fail",
+    "shadowWouldBlock": true,
+    "commit": "7e28ef9639ef4562341c58d6bc5de3630d60cb95",
+    "environmentFingerprint": "22b04e2e67dbabd47ef7e121f033d15f3ba16315ddb9d185fa86cd49b18115ce",
+    "workingTreeDirty": true,
+    "runDir": "E:\\proptest\\systemquality\\gates\\G2-20261123-153435-W1-08-DRYRUN-02",
+    "resultFile": "E:\\proptest\\systemquality\\gates\\G2-20261123-153435-W1-08-DRYRUN-02\\gate-results.json",
+    "classificationFile": "E:\\proptest\\systemquality\\gates\\G2-20261123-153435-W1-08-DRYRUN-02\\failure-classification.json",
+    "failureClasses": [
+      "environment/tool",
+      "code/style",
+      "existing-baseline"
+    ],
+    "confirmedBusinessDefects": 0,
+    "hardGateEffective": false
+  },
+  "followUps": [
+    {
+      "id": "W2-01",
+      "name": "修复模板资源 CRLF 与 manifest 哈希不一致",
+      "priority": "P0",
+      "status": "open",
+      "owner": "张树旸",
+      "reviewer": "贾婉月",
+      "dueDate": "2026-11-27",
+      "evidence": "12-W1-08-G2影子编排与失败分类.md；failure-classification.json"
+    },
+    {
+      "id": "W2-02",
+      "name": "建立前端行尾和全量格式化基线",
+      "priority": "P0",
+      "status": "open",
+      "owner": "张树旸",
+      "reviewer": "贾婉月",
+      "dueDate": "2026-11-27",
+      "evidence": "frontend-lint.log"
+    },
+    {
+      "id": "W2-03",
+      "name": "修复前端测试夹具、语言环境和动态注入",
+      "priority": "P0",
+      "status": "open",
+      "owner": "贾婉月",
+      "reviewer": "张树旸",
+      "dueDate": "2026-11-28",
+      "evidence": "frontend-test.log"
+    },
+    {
+      "id": "W2-04",
+      "name": "复核独立断言与临时目录权限异常",
+      "priority": "P1",
+      "status": "open",
+      "owner": "贾婉月、张树旸",
+      "reviewer": "李旸",
+      "dueDate": "2026-11-28",
+      "evidence": "backend-test.log；Surefire 报告"
+    },
+    {
+      "id": "W2-05",
+      "name": "在干净工作树连续执行两次 G2",
+      "priority": "P0",
+      "status": "blocked",
+      "owner": "张树旸",
+      "reviewer": "贾婉月、李旸",
+      "dueDate": "2026-11-29",
+      "evidence": "W2-01、W2-02、W2-03 完成后启动"
+    },
+    {
+      "id": "W2-06",
+      "name": "执行首批订单到寄送 Oracle",
+      "priority": "P0",
+      "status": "blocked",
+      "owner": "贾婉月",
+      "reviewer": "张树旸",
+      "dueDate": "2026-12-02",
+      "evidence": "11-W1-07订单到寄送业务Oracle.md；oracles/order-shipment-oracles.json",
+      "blocker": "数据库种子与重置方式、角色账号矩阵和 APP_ENV_FINGERPRINT 尚未补齐"
+    }
+  ]
+}

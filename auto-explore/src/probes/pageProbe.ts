@@ -12,6 +12,7 @@ export interface PageObservation {
   ariaSnapshot: string;
   interactive: InteractiveElement[];
   visibleTextSample: string;
+  dialogTexts: string[];
   consoleErrors: string[];
   pageErrors: string[];
   formErrors: string[];
@@ -65,6 +66,14 @@ export class PageProbe {
       .catch(() => [] as string[])
       .then((arr) => arr.map((s) => s.trim()).filter(Boolean));
 
+    // Ant Design dialogs are appended at the end of <body>, so they never reach
+    // visibleTextSample's leading slice. Capture them separately for oracle checks.
+    const dialogTexts = await page
+      .locator('[role="dialog"], .ant-modal')
+      .allInnerTexts()
+      .catch(() => [] as string[])
+      .then((arr) => arr.map((s) => s.replace(/\s+/g, " ").trim()).filter(Boolean));
+
     return {
       url: page.url(),
       title: await page.title(),
@@ -72,6 +81,7 @@ export class PageProbe {
       ariaSnapshot: ariaSnapshot.slice(0, 4000),
       interactive: this.parseInteractive(ariaSnapshot),
       visibleTextSample: bodyText.replace(/\s+/g, " ").slice(0, textSampleLength),
+      dialogTexts,
       consoleErrors: [...this.consoleErrors],
       pageErrors: [...this.pageErrors],
       formErrors,

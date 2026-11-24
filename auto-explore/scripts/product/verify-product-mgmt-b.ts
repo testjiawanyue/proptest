@@ -68,8 +68,8 @@ async function seedProduct(no: string, mNo: string, seconds: number): Promise<{ 
      VALUES (?, ?, ?, 'AI自动探索', DATE_ADD(NOW(), INTERVAL ? SECOND), 0)`, [no, no, mNo, seconds]);
   const productId = Number(product.insertId);
   const part = await db.execute(
-    `INSERT INTO prop_part_item (part_no, active_part_no, part_type, source_type, current_profile_id, current_profile_version_id, create_by, create_time)
-     VALUES (?, ?, 'jacket', 'intake', 1, 12, 'AI自动探索', DATE_ADD(NOW(), INTERVAL ? SECOND))`, [no, no, seconds]);
+    `INSERT INTO prop_part_item (part_no, active_part_no, part_type, number_scope, source_type, current_profile_id, current_profile_version_id, create_by, create_time)
+     VALUES (?, ?, 'jacket', 'jacket', 'intake', 1, 12, 'AI自动探索', DATE_ADD(NOW(), INTERVAL ? SECOND))`, [no, no, seconds]);
   const partId = Number(part.insertId);
   const binding = await db.execute(
     `INSERT INTO prop_product_binding (product_id, part_id, slot_type, active_slot_key, active_part_key, started_by, started_time)

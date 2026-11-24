@@ -1,0 +1,37 @@
+{
+  "id": "CHARTER-PROD-FLOW-JACKET-REPLACE-001",
+  "title": "流程：衣体交换只登记物理交换事件，不改制造番号与绑定",
+  "priority": "P1-unconfirmed",
+  "goal": "製品一覧で「製造番号検索」に切り替え、製造番号「ATG6」を検索して結果行の「表示」で製品詳細を開く。現在の部品にあるジャケット行の「ジャケット交換」を押し、確認ダイアログで「交換を登録」を押す。成功メッセージ「ジャケット交換を登録しました。」が出ることを確認する。",
+  "linkedReqIds": ["REQ-028"],
+  "linkedBrIds": [],
+  "linkedCaseIds": ["ジャケット交換-001"],
+  "startUrl": "/products/list",
+  "constraints": [
+    "目标製造番号固定为 ATG6",
+    "只执行ジャケット交換，不拆卸、不追加、不交换其他部品",
+    "不修改製造番号、部品番号、资料保存路径"
+  ],
+  "oracleHints": [
+    { "kind": "api", "description": "调用衣体交换接口", "expect": "replace-body" },
+    { "kind": "toast-text", "description": "衣体交换成功提示", "expect": "ジャケット交換を登録しました。" },
+    {
+      "kind": "db",
+      "description": "本次运行新增 BODY_PHYSICAL_REPLACED 事件",
+      "sql": "SELECT event_id FROM prop_production_event WHERE event_type='BODY_PHYSICAL_REPLACED' AND product_id=(SELECT product_id FROM prop_product WHERE manufacturing_no='ATG6') AND create_time >= {{runStartedAt}}",
+      "keyField": "event_id",
+      "expect": "added >= 1"
+    },
+    {
+      "kind": "db",
+      "description": "产品与制造番号保持不变",
+      "sql": "SELECT product_id FROM prop_product WHERE manufacturing_no='ATG6' AND deleted_time IS NULL",
+      "keyField": "product_id",
+      "expect": "afterCount > 0"
+    }
+  ],
+  "cleanupSql": [
+    "DELETE FROM prop_production_event WHERE event_type='BODY_PHYSICAL_REPLACED' AND product_id=(SELECT product_id FROM prop_product WHERE manufacturing_no='ATG6') AND create_time >= {{runStartedAt}}"
+  ],
+  "maxSteps": 24
+}

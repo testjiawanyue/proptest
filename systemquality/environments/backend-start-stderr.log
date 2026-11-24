@@ -1,0 +1,8 @@
+Out-File : 文件“E:\proptest\systemquality\environments\backend-jdk17-run.log”正由另一进程使用，因此该进程无法访问此文
+件。
+所在位置 E:\proptest\systemquality\tools\start-backend-jdk17.ps1:31 字符: 54
++ ... 姩 JDK 17 鍚庣 =====" | Out-File -FilePath $log -Append -Encoding utf8
++                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], IOException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+ 

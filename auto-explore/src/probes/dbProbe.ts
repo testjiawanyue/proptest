@@ -38,6 +38,12 @@ export class DbProbe {
     return { label, rows: rows as Record<string, unknown>[], takenAt: new Date().toISOString() };
   }
 
+  /** Executes a single guarded mutation (charter setup/cleanup SQL). */
+  async execute(sql: string): Promise<void> {
+    this.assertConnected();
+    await this.pool!.query(sql);
+  }
+
   diff(label: string, before: DbSnapshot, after: DbSnapshot, keyField: string): DbDiff {
     const keyOf = (row: Record<string, unknown>): string => String(row[keyField]);
     const beforeKeys = new Set(before.rows.map(keyOf));

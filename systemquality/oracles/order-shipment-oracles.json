@@ -1,0 +1,96 @@
+{
+  "version": "1.0",
+  "definedAt": "2026-11-23",
+  "scope": "订单管理到寄送和面单",
+  "status": "defined-not-executed",
+  "owners": {
+    "quality": "贾婉月",
+    "orderChain": "贾婉月",
+    "business": "张树旸",
+    "development": "张树旸",
+    "security": "张树旸",
+    "release": "李旸"
+  },
+  "oracles": [
+    {
+      "id": "ORD-STATE-01",
+      "name": "寄送确认后的状态与事实一致",
+      "priority": "P0",
+      "businessPath": ["订单详情", "寄送准备", "寄送确认", "订单寄送履历"],
+      "preconditions": ["订单 active 且剩余数量大于 0", "寄送 preparing 且含可寄送产品", "承运商、寄送日期和收货地址有效"],
+      "action": "POST /prop/shipment/{shipmentId}/confirm，并重复确认一次",
+      "requiredAssertions": [
+        "首次确认 code=200 且 shipment.status=shipped",
+        "重复确认成功且不新增关系",
+        "prop_shipment.confirmed_by 和 confirmed_time 非空",
+        "prop_order.order_status=active（取消场景除外）",
+        "每个寄送产品存在唯一有效 prop_product_order_relation",
+        "寄送占用已释放",
+        "产品首次寄送事实已采用"
+      ],
+      "evidence": ["ui", "api", "db", "mail-file"],
+      "failureClasses": ["business/state", "data/consistency", "idempotency"],
+      "owner": "贾婉月",
+      "status": "defined"
+    },
+    {
+      "id": "ORD-DATA-01",
+      "name": "寄送产品数量与订单剩余数量一致",
+      "priority": "P0",
+      "businessPath": ["订单创建", "挑选产品", "加入寄送", "确认寄送"],
+      "preconditions": ["订单数量为 2", "两个不同且可寄送产品", "无其他寄送占用"],
+      "action": "分别加入 1 个、2 个和第 3 个产品并核对结果",
+      "requiredAssertions": [
+        "加入数量不超过订单剩余数量",
+        "确认后关系产品集合等于寄送产品集合",
+        "未加入产品不产生本次寄送的有效关系",
+        "页面、API 和数据库数量一致",
+        "超限请求不产生部分写入"
+      ],
+      "evidence": ["ui", "api", "db"],
+      "failureClasses": ["business/quantity", "data/consistency", "transaction"],
+      "owner": "贾婉月",
+      "status": "defined"
+    },
+    {
+      "id": "ORD-FILE-01",
+      "name": "寄送通知与面单文件可追溯",
+      "priority": "P0",
+      "businessPath": ["寄送确认", "通知邮件", "批量面单", "文件下载"],
+      "preconditions": ["寄送已确认", "承运商为受控 Yamato 或 Sagawa 配置"],
+      "action": "读取 mail 文件，生成 waybill 文件，重复请求并核对内容",
+      "requiredAssertions": [
+        "文件绑定正确 shipment_id",
+        "file_type 合法且 version 单调递增",
+        "request_id、payload_hash、template_version 非空",
+        "相同请求幂等且不新增版本",
+        "snapshot_json 与数据库一致",
+        "waybill 可打开为 XLSX 且关键字段匹配",
+        "mail 内容可读取且收件人/寄送信息匹配"
+      ],
+      "evidence": ["ui", "api", "db", "file-content"],
+      "failureClasses": ["file/generation", "file/version", "idempotency", "data/consistency"],
+      "owner": "张树旸",
+      "status": "defined"
+    },
+    {
+      "id": "ORD-AUTH-01",
+      "name": "无权限用户不能查看或操作寄送",
+      "priority": "P0",
+      "businessPath": ["登录", "订单详情", "寄送查看", "寄送写操作"],
+      "preconditions": ["管理员、有权限用户、无权限用户凭据位置已登记", "测试环境隔离"],
+      "action": "分别以未登录、无权限、只读和有写权限角色调用寄送接口与页面",
+      "requiredAssertions": [
+        "未登录不返回寄送正文",
+        "无权限用户被 401/403 或统一权限错误拒绝",
+        "只读用户不能修改、删除或确认",
+        "前端禁用不能替代后端权限校验",
+        "被拒绝请求不产生数据库或文件副作用"
+      ],
+      "evidence": ["ui", "api", "db-optional"],
+      "failureClasses": ["security/authz", "security/data-exposure", "audit"],
+      "owner": "张树旸",
+      "status": "defined"
+    }
+  ]
+}

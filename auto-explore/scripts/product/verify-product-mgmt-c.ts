@@ -44,8 +44,8 @@ async function seedCBody(): Promise<void> {
      VALUES (?, ?, 'MCBODY1', 'AI自动探索', NOW(), 0)`, [C_NO, C_NO]);
   FIX.productId = Number(product.insertId);
   const part = await db.execute(
-    `INSERT INTO prop_part_item (part_no, active_part_no, part_type, source_type, current_profile_id, current_profile_version_id, create_by, create_time)
-     VALUES (?, ?, 'jacket', 'intake', 1, 12, 'AI自动探索', NOW())`, [C_NO, C_NO]);
+    `INSERT INTO prop_part_item (part_no, active_part_no, part_type, number_scope, source_type, current_profile_id, current_profile_version_id, create_by, create_time)
+     VALUES (?, ?, 'jacket', 'jacket', 'intake', 1, 12, 'AI自动探索', NOW())`, [C_NO, C_NO]);
   FIX.partId = Number(part.insertId);
   const binding = await db.execute(
     `INSERT INTO prop_product_binding (product_id, part_id, slot_type, active_slot_key, active_part_key, started_by, started_time)

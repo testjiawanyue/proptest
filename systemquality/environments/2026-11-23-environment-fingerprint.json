@@ -1,0 +1,398 @@
+{
+  "environmentId": "ENV-2026-11-23-01",
+  "capturedAt": "2026-11-23T15:43:59+08:00",
+  "status": "captured",
+  "environmentFingerprint": "22b04e2e67dbabd47ef7e121f033d15f3ba16315ddb9d185fa86cd49b18115ce",
+  "fingerprintMaterial": {
+    "projectCommit": "7e28ef9639ef4562341c58d6bc5de3630d60cb95",
+    "frontendPort": 8090,
+    "backendPort": 8080,
+    "database": {
+      "host": "127.0.0.1",
+      "port": 13306,
+      "name": "prop_dev_local",
+      "schemaDigest": "c51a3f1d65fcce05d5762d393b7e0bb5b2e95150a2962941988fcd56eb7b4ead"
+    },
+    "redis": {
+      "host": "127.0.0.1",
+      "port": 16379
+    },
+    "java": "java version \"17.0.2\" 2022-01-18 LTS",
+    "node": "v24.13.0",
+    "maven": "Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)",
+    "containerDigests": {
+      "prop-dev2-local-mysql": "mysql@sha256:f2ad209efe9c67104167fc609cca6973c8422939491c9345270175a300419f94",
+      "prop-dev2-local-redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499"
+    },
+    "configHashes": {
+      "applicationYml": "bc17ff2c0689e5bf425f78b210b8eaa36256234414272b2929f0574ae33971bb",
+      "applicationDruidYml": "19d1020c297c6ab9d6ffcde415f362f90e3c07ae25bc9283630eb122f7a26076",
+      "localApplicationOverride": "3046c35fa2ef8840f1268efd4fe8baa85c8a402c3ee719d2bd2f5b02b5dad77f",
+      "composeLocal": "90ed0899ec474175ea86695554bd5fbdbe570a333c2a6a56a6b1e21f185198fe",
+      "frontendDevEnv": "a7c5722a766efbee351716fb30e8dc580e36ba24613d0388b07c24e1dfadc036",
+      "viteBase": "7ebed6acf8e7c7a9cf87cae927b355f7ed453f5674476c024f41997a43a6f7eb",
+      "frontendPackageLock": "5840fb5b1490cb1558620981c4c963777dcabe2c9aaf2e53a9ebeb3d7ad3a12e",
+      "autoExplorePackageLock": "580fce106bd60e13974886553fae7cc3658f78150acfac475063c446a47c34e4",
+      "autoExploreEnv": "c58865b5fecb378590877bc0f5be1c6ccdea67237aeb3c8b2c38257a6ffce873"
+    }
+  },
+  "host": {
+    "hostname": "DESKTOP-LVCFINU",
+    "user": "duliang",
+    "os": "Windows",
+    "osRelease": "11",
+    "osVersion": "10.0.26200",
+    "architecture": "AMD64",
+    "logicalCpuCount": 16,
+    "timezone": "中国标准时间",
+    "python": "3.12.13"
+  },
+  "toolchain": {
+    "expectedJava": "17",
+    "java": {
+      "available": true,
+      "versionLine": "openjdk version \"21.0.12.1\" 2026-08-18 LTS",
+      "path": "D:\\jdk21\\bin\\java.EXE"
+    },
+    "mvn": {
+      "available": true,
+      "versionLine": "Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)",
+      "path": "D:\\Maven\\apache-maven-3.9.6\\bin\\mvn.cmd"
+    },
+    "node": {
+      "available": true,
+      "versionLine": "v24.13.0",
+      "path": "D:\\Nodejs\\node.EXE"
+    },
+    "npm": {
+      "available": true,
+      "versionLine": "11.6.2",
+      "path": "D:\\Nodejs\\npm.cmd"
+    },
+    "pnpm": {
+      "available": true,
+      "versionLine": "12.3.4",
+      "path": "C:\\Users\\duliang\\AppData\\Roaming\\npm\\pnpm.cmd"
+    },
+    "git": {
+      "available": true,
+      "versionLine": "git version 2.52.0.windows.1",
+      "path": "D:\\git\\Git\\cmd\\git.EXE"
+    },
+    "mysql": {
+      "available": true,
+      "versionLine": "mysql  Ver 8.0.40 for Win64 on x86_64 (MySQL Community Server - GPL)",
+      "path": "D:\\mysql\\mysql-8.0.40-winx64\\bin\\mysql.EXE"
+    },
+    "docker": {
+      "available": true,
+      "versionLine": "Docker version 29.8.2, build 7fc2dff",
+      "path": "D:\\Docker\\Program\\resources\\bin\\docker.EXE"
+    },
+    "dockerServer": {
+      "available": true,
+      "versionLine": "29.8.2",
+      "path": "D:\\Docker\\Program\\resources\\bin\\docker.EXE"
+    },
+    "backendRuntime": {
+      "detected": true,
+      "processId": 23760,
+      "parentProcessId": 26984,
+      "creationDate": "/Date(1795419818020)/",
+      "javaPath": "C:\\Program Files\\Java\\jdk-17.0.2\\bin\\java.exe",
+      "javaVersionLine": "java version \"17.0.2\" 2022-01-18 LTS",
+      "timezoneArgument": "-Duser.timezone=Asia/Tokyo"
+    },
+    "frontendNodeEngine": ">=18.0.0",
+    "autoExploreNodeEngine": ">=20"
+  },
+  "project": {
+    "path": "E:\\proptest\\prop_new",
+    "git": {
+      "branch": "main",
+      "commit": "7e28ef9639ef4562341c58d6bc5de3630d60cb95",
+      "commitTime": "2026-11-16T13:21:22+08:00",
+      "statusShort": "M ruoyi-ui/config/eslint/.eslintrc-auto-import.json\n M ruoyi-ui/package.json\n M ruoyi-ui/src/types/auto-imports.d.ts\n M ruoyi-ui/src/types/components.d.ts\n M ruoyi-ui/tests/c01-c02-recovery-followup.test.mjs\n?? sql/cleanup_auto_test_data.sql\n?? sql/clear_all_prop_data.sql",
+      "dirtyFileCount": 7,
+      "isClean": false,
+      "baselineNote": "基线采集时工作区已有变更；不得归因于质量体系采集。"
+    },
+    "ci": {
+      "Jenkinsfile": false,
+      ".gitlab-ci.yml": false,
+      "azure-pipelines.yml": false,
+      "bitbucket-pipelines.yml": false,
+      "githubWorkflows": [],
+      "detected": false
+    }
+  },
+  "runtime": {
+    "frontend": {
+      "actualPort": 8090,
+      "viteDefaultPort": 3000,
+      "proxyTarget": "http://localhost:8080",
+      "baseApi": "/dev-api",
+      "envFilesFound": [
+        ".env",
+        ".env.dev",
+        ".env.example",
+        ".env.prod",
+        ".env.test"
+      ],
+      "autoExploreBaseUrl": "http://localhost:8090",
+      "autoExploreApiPrefix": "/dev-api"
+    },
+    "backend": {
+      "port": 8080,
+      "activeProfile": "druid,local",
+      "dbUrlOverrideConfigured": true,
+      "db": {
+        "engine": "mysql",
+        "host": "127.0.0.1",
+        "port": 13306,
+        "database": "prop_dev_local",
+        "jdbcConnectionTimeZone": "%2B09:00"
+      },
+      "redis": {
+        "host": "127.0.0.1",
+        "port": 16379
+      }
+    },
+    "autoExplore": {
+      "configuredKeys": [
+        "ALLOW_CHARTER_SQL",
+        "APP_API_PREFIX",
+        "APP_BASE_URL",
+        "APP_ENV_FINGERPRINT",
+        "APP_LOGIN_PASSWORD",
+        "APP_LOGIN_USER",
+        "DB_HOST",
+        "DB_NAME",
+        "DB_PASSWORD",
+        "DB_PORT",
+        "DB_USER",
+        "HEADLESS",
+        "LLM_API_BASE",
+        "LLM_API_KEY",
+        "LLM_MODEL",
+        "MAX_STEPS_PER_CHARTER",
+        "TRACE_DIR"
+      ],
+      "loginUserConfigured": true,
+      "loginPasswordConfigured": true,
+      "environmentFingerprintConfigured": false,
+      "dbUserConfigured": true,
+      "dbPasswordConfigured": true,
+      "headless": "true",
+      "maxStepsPerCharter": "40",
+      "traceDir": "reports/traces",
+      "allowCharterSql": "true",
+      "llmModel": "DeepSeek-V4.1-Flash",
+      "llmApiBaseConfigured": true,
+      "llmApiKeyConfigured": true
+    },
+    "browser": {
+      "playwrightVersion": "1.64.1",
+      "chromium": {
+        "executablePath": "C:\\Users\\duliang\\AppData\\Local\\ms-playwright\\chromium-1248\\chrome-win64\\chrome.exe",
+        "exists": true
+      }
+    },
+    "containers": {
+      "prop-dev2-local-mysql": {
+        "available": true,
+        "status": "running",
+        "health": "healthy",
+        "startedAt": "2026-11-23T07:19:16.475996235Z",
+        "image": "mysql:5.7.36",
+        "imageId": "sha256:f2ad209efe9c67104167fc609cca6973c8422939491c9345270175a300419f94",
+        "repoDigest": "mysql@sha256:f2ad209efe9c67104167fc609cca6973c8422939491c9345270175a300419f94"
+      },
+      "prop-dev2-local-redis": {
+        "available": true,
+        "status": "running",
+        "health": "healthy",
+        "startedAt": "2026-11-23T07:19:16.243598668Z",
+        "image": "redis:7.4-alpine",
+        "imageId": "sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+        "repoDigest": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499"
+      }
+    }
+  },
+  "reachability": [
+    {
+      "host": "127.0.0.1",
+      "port": 8090,
+      "reachable": true,
+      "latencyMs": 46,
+      "name": "frontend",
+      "required": true
+    },
+    {
+      "host": "127.0.0.1",
+      "port": 8080,
+      "reachable": true,
+      "latencyMs": 0,
+      "name": "backend",
+      "required": true
+    },
+    {
+      "host": "127.0.0.1",
+      "port": 13306,
+      "reachable": true,
+      "latencyMs": 0,
+      "name": "mysql",
+      "required": true
+    },
+    {
+      "host": "127.0.0.1",
+      "port": 16379,
+      "reachable": true,
+      "latencyMs": 1,
+      "name": "redis",
+      "required": true
+    },
+    {
+      "host": "127.0.0.1",
+      "port": 3000,
+      "reachable": false,
+      "latencyMs": 1207,
+      "error": "TimeoutError",
+      "name": "viteDefaultUnused",
+      "required": false
+    }
+  ],
+  "runtimeChecks": {
+    "http": [
+      {
+        "name": "frontendLogin",
+        "url": "http://127.0.0.1:8090/",
+        "required": true,
+        "reachable": true,
+        "status": 200,
+        "contentType": "text/html",
+        "latencyMs": 131,
+        "bodyBytesSampled": 1397
+      },
+      {
+        "name": "backendRoot",
+        "url": "http://127.0.0.1:8080/",
+        "required": true,
+        "reachable": true,
+        "status": 200,
+        "contentType": "text/plain;charset=UTF-8",
+        "latencyMs": 119,
+        "bodyBytesSampled": 92
+      },
+      {
+        "name": "backendHealthEnvelope",
+        "url": "http://127.0.0.1:8080/actuator/health",
+        "required": false,
+        "reachable": true,
+        "status": 200,
+        "contentType": "application/json;charset=utf-8",
+        "latencyMs": 31,
+        "bodyBytesSampled": 90
+      },
+      {
+        "name": "backendRedisCaptcha",
+        "url": "http://127.0.0.1:8080/captchaImage",
+        "required": true,
+        "reachable": true,
+        "status": 200,
+        "contentType": "application/json",
+        "latencyMs": 113,
+        "bodyBytesSampled": 74
+      }
+    ],
+    "database": {
+      "connected": true,
+      "serverVersion": "5.7.36",
+      "characterSetServer": "utf8mb4",
+      "collationServer": "utf8mb4_general_ci",
+      "globalTimeZone": "SYSTEM",
+      "sessionTimeZone": "SYSTEM",
+      "serverNow": "2026-11-23 07:44:09",
+      "database": "prop_dev_local",
+      "tableCount": 84,
+      "schemaDigest": "c51a3f1d65fcce05d5762d393b7e0bb5b2e95150a2962941988fcd56eb7b4ead",
+      "coreTableCounts": {
+        "prop_order": 8,
+        "prop_order_line": 9,
+        "prop_shipment": 11,
+        "prop_shipment_product": 11
+      },
+      "queryMode": "read-only"
+    }
+  },
+  "configFingerprint": {
+    "applicationYml": {
+      "path": "E:\\proptest\\prop_new\\ruoyi-admin\\src\\main\\resources\\application.yml",
+      "sizeBytes": 1906,
+      "lastWriteTime": "2026-10-28T10:00:31.380110+08:00",
+      "sha256": "bc17ff2c0689e5bf425f78b210b8eaa36256234414272b2929f0574ae33971bb"
+    },
+    "applicationDruidYml": {
+      "path": "E:\\proptest\\prop_new\\ruoyi-admin\\src\\main\\resources\\application-druid.yml",
+      "sizeBytes": 1397,
+      "lastWriteTime": "2026-10-22T09:57:40.490116+08:00",
+      "sha256": "19d1020c297c6ab9d6ffcde415f362f90e3c07ae25bc9283630eb122f7a26076"
+    },
+    "localApplicationOverride": {
+      "path": "E:\\proptest\\prop_new\\.local\\mysql\\application-local.yml",
+      "sizeBytes": 627,
+      "lastWriteTime": "2026-10-10T15:42:59.984064+08:00",
+      "sha256": "3046c35fa2ef8840f1268efd4fe8baa85c8a402c3ee719d2bd2f5b02b5dad77f"
+    },
+    "composeLocal": {
+      "path": "E:\\proptest\\prop_new\\compose.local.yaml",
+      "sizeBytes": 1791,
+      "lastWriteTime": "2026-10-10T15:39:54.918570+08:00",
+      "sha256": "90ed0899ec474175ea86695554bd5fbdbe570a333c2a6a56a6b1e21f185198fe"
+    },
+    "frontendDevEnv": {
+      "path": "E:\\proptest\\prop_new\\ruoyi-ui\\env\\.env.dev",
+      "sizeBytes": 343,
+      "lastWriteTime": "2026-10-10T15:39:56.640941+08:00",
+      "sha256": "a7c5722a766efbee351716fb30e8dc580e36ba24613d0388b07c24e1dfadc036"
+    },
+    "viteBase": {
+      "path": "E:\\proptest\\prop_new\\ruoyi-ui\\config\\vite\\base.js",
+      "sizeBytes": 3271,
+      "lastWriteTime": "2026-10-10T15:39:56.635941+08:00",
+      "sha256": "7ebed6acf8e7c7a9cf87cae927b355f7ed453f5674476c024f41997a43a6f7eb"
+    },
+    "frontendPackageLock": {
+      "path": "E:\\proptest\\prop_new\\ruoyi-ui\\package-lock.json",
+      "sizeBytes": 256276,
+      "lastWriteTime": "2026-11-03T15:26:21.914027+08:00",
+      "sha256": "5840fb5b1490cb1558620981c4c963777dcabe2c9aaf2e53a9ebeb3d7ad3a12e"
+    },
+    "autoExplorePackageLock": {
+      "path": "E:\\proptest\\auto-explore\\package-lock.json",
+      "sizeBytes": 22581,
+      "lastWriteTime": "2026-10-19T15:00:45.237433+08:00",
+      "sha256": "580fce106bd60e13974886553fae7cc3658f78150acfac475063c446a47c34e4"
+    },
+    "autoExploreEnv": {
+      "path": "E:\\proptest\\auto-explore\\.env",
+      "sha256": "c58865b5fecb378590877bc0f5be1c6ccdea67237aeb3c8b2c38257a6ffce873",
+      "content": "[已脱敏]"
+    }
+  },
+  "blockingGaps": [],
+  "residualRisks": [
+    "auto-explore 未配置 APP_ENV_FINGERPRINT，当前防误连主要依赖 local/private 主机限制和人工复核",
+    "prop_new 工作区存在既有未提交改动，环境指纹绑定到当前提交但不代表工作树干净"
+  ],
+  "gaps": [
+    "auto-explore 未配置 APP_ENV_FINGERPRINT，当前防误连主要依赖 local/private 主机限制和人工复核",
+    "prop_new 工作区存在既有未提交改动，环境指纹绑定到当前提交但不代表工作树干净"
+  ],
+  "secretPolicy": "账号、密码、Token、API Key 和 JDBC 凭据未写入本文件。",
+  "reproduction": {
+    "script": "E:\\proptest\\systemquality\\tools\\capture_w1_baseline.py",
+    "python": "3.12.13",
+    "note": "只读采集；核心服务或运行态检查失败时标记为 captured-with-blockers。"
+  }
+}

@@ -8,8 +8,18 @@ import { login, createSession, closeSession, saveStorageState } from "../src/act
 
 async function main(): Promise<void> {
   const planner = new Planner();
-  const charters = await planner.loadCharters();
-  console.log(`[explore] loaded ${charters.length} charters`);
+  const charterPrefix = process.argv
+    .slice(2)
+    .find((arg) => arg.startsWith("--charter="))
+    ?.slice("--charter=".length);
+  const loaded = await planner.loadCharters();
+  const charters = charterPrefix ? loaded.filter((charter) => charter.id.startsWith(charterPrefix)) : loaded;
+  console.log(
+    charterPrefix
+      ? `[explore] loaded ${charters.length}/${loaded.length} charters (prefix=${charterPrefix})`
+      : `[explore] loaded ${charters.length} charters`,
+  );
+  if (charters.length === 0) throw new Error(`No charters matched prefix '${charterPrefix}'`);
 
   const dbProbe = new DbProbe();
   let db: DbProbe | null = null;

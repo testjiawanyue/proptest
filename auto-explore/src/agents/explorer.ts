@@ -6,7 +6,7 @@ import { NetworkProbe } from "../probes/networkProbe.js";
 import { DbProbe } from "../probes/dbProbe.js";
 import { StateGraph } from "../state-graph/stateGraph.js";
 import { createSession, closeSession, login, saveStorageState } from "../actions/session.js";
-import { assertActionAllowed } from "../guardrails/guardrails.js";
+import { assertActionAllowed, assertCharterSqlAllowed } from "../guardrails/guardrails.js";
 import type { Charter, CharterResult, StepRecord, VerdictLevel } from "./types.js";
 import { createDeciderForCharter, type AgentAction, type LlmClient } from "./llm.js";
 import { Oracle } from "./oracle.js";
@@ -45,7 +45,7 @@ export class Explorer {
     this.pageProbe.attach(session.page);
     this.networkProbe.attach(session.page);
     this.oracle.reset();
-    await this.oracle.takeBeforeSnapshots(charter);
+    this.oracle.setRunStartedAt(startedAt);
 
     // Reuse login state if available; otherwise auto-login
     const hasAuth = await access(config.run.storageStatePath).then(() => true).catch(() => false);
@@ -74,6 +74,9 @@ export class Explorer {
     this.stateGraph.beginRun();
 
     try {
+      await this.applyCharterSql(charter.setupSql, `${charter.id} setupSql`, startedAt);
+      await this.oracle.takeBeforeSnapshots(charter);
+
       for (let stepIndex = 0; stepIndex < maxSteps; stepIndex++) {
         // On step 0, re-verify we're actually past login. A stale cookie or a
         // session that got dropped between Charters can leave us on /login2
@@ -205,6 +208,11 @@ export class Explorer {
       verdict = "unconfirmed";
       verdictReason = `unhandled error: ${(err as Error).message}`;
     } finally {
+      try {
+        await this.applyCharterSql(charter.cleanupSql, `${charter.id} cleanupSql`, startedAt);
+      } catch (err) {
+        warnings.push(`cleanup failed: ${(err as Error).message}`);
+      }
       const tracePath = await closeSession(session, charter.id);
       const coverage = this.stateGraph.coverage();
       await this.stateGraph.save(config.run.stateGraphPath);
@@ -231,6 +239,22 @@ export class Explorer {
       this.networkProbe.reset();
       this.pageProbe.resetErrors();
       return result;
+    }
+  }
+
+  /**
+   * Executes guarded fixture SQL. `{{runStartedAt}}` is rendered as a MySQL
+   * datetime so cleanup can scope itself to rows created by this run.
+   */
+  private async applyCharterSql(statements: string[] | undefined, label: string, startedAt: string): Promise<void> {
+    if (!statements?.length) return;
+    if (!this.dbProbe) throw new Error(`${label}: DB probe is not available`);
+    const runAt = new Date(startedAt).toISOString().slice(0, 19).replace("T", " ");
+    for (const raw of statements) {
+      const sql = raw.replaceAll("{{runStartedAt}}", `'${runAt}'`);
+      assertCharterSqlAllowed(sql, config.run.allowCharterSql);
+      await this.dbProbe.execute(sql);
+      console.log(`[explorer] ${label}: ${sql.slice(0, 160)}`);
     }
   }
 

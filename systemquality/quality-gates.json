@@ -1,0 +1,569 @@
+{
+  "version": "1.0",
+  "project": "PROP",
+  "description": "AI 开发项目质量保证门禁定义。初始模式均为影子或告警，达到稳定标准后转为阻断。",
+  "principles": [
+    "需求基准独立于实现",
+    "确定性工具优先",
+    "AI 不担任最终裁判",
+    "风险决定验证深度",
+    "证据必须绑定提交号、环境、工具版本和执行时间",
+    "任何新增阻断门禁必须支持降级和人工替代"
+  ],
+  "riskLevels": {
+    "P0": {
+      "description": "不可逆业务动作、权限边界、核心数据一致性、正式文件产物或跨模块主链",
+      "minimumLayers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5"
+      ],
+      "humanApproval": true
+    },
+    "P1": {
+      "description": "重要业务流程、批量操作、历史数据、统计口径或时间边界",
+      "minimumLayers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "humanApproval": true
+    },
+    "P2": {
+      "description": "普通 CRUD、展示、文案、导航或非关键排序",
+      "minimumLayers": [
+        "L0",
+        "L1",
+        "L4-lite"
+      ],
+      "humanApproval": false
+    },
+    "P3": {
+      "description": "纯文档、注释或对运行无影响的配置说明",
+      "minimumLayers": [
+        "L0-lite"
+      ],
+      "humanApproval": false
+    }
+  },
+  "gates": [
+    {
+      "id": "G0",
+      "name": "任务准入",
+      "stage": "S0",
+      "initialMode": "shadow",
+      "blockingChecks": [
+        "外部 Spec 版本可追溯",
+        "变更范围和验收条件明确",
+        "风险等级已判定",
+        "测试数据和环境责任人明确",
+        "P0/P1 变更已指定业务审批人"
+      ],
+      "requiredEvidence": [
+        "requirements.md",
+        "risk.md"
+      ],
+      "owner": "产品与需求负责人",
+      "failureAction": "退回补充需求或拆分任务",
+      "firstRoundMode": "shadow",
+      "targetMode": "shadow-plus-manual",
+      "promotion": "第3周评估需求证据完整性"
+    },
+    {
+      "id": "G1",
+      "name": "设计准入",
+      "stage": "S1",
+      "initialMode": "shadow",
+      "blockingChecks": [
+        "变更边界明确",
+        "接口 Schema 和错误码明确",
+        "数据库迁移有前置、后置和回滚方案",
+        "权限和路由影响明确",
+        "测试策略与风险等级匹配"
+      ],
+      "requiredEvidence": [
+        "change-impact.md",
+        "contract.md",
+        "test-plan.md",
+        "rollback.md"
+      ],
+      "owner": "开发负责人和架构负责人",
+      "failureAction": "退回设计修订或评审",
+      "firstRoundMode": "shadow",
+      "targetMode": "shadow-plus-manual-for-P0",
+      "promotion": "第5周评估契约、影响分析和回滚说明"
+    },
+    {
+      "id": "G2",
+      "name": "提交前门禁",
+      "stage": "S2",
+      "initialMode": "shadow",
+      "blockingChecks": [
+        "后端构建通过",
+        "前端构建和类型检查通过",
+        "Lint 通过",
+        "受影响的单元或组件测试通过",
+        "Secret 扫描无新增高危项",
+        "变更范围与任务单一致"
+      ],
+      "requiredEvidence": [
+        "build.log",
+        "lint.log",
+        "unit-test.json",
+        "secret-scan.json",
+        "failure-classification.json"
+      ],
+      "owner": "开发负责人",
+      "failureAction": "开发修复后重跑",
+      "firstRoundMode": "shadow-deterministic",
+      "targetMode": "blocking-deterministic",
+      "promotion": "连续两次结果一致、P95不超过10分钟且误报可解释后，第3-4周转阻断",
+      "firstRoundChecks": [
+        "后端构建",
+        "前端构建",
+        "类型检查",
+        "Lint",
+        "Secret扫描",
+        "相关单元测试"
+      ],
+      "execution": {
+        "orchestrator": "tools/g2_shadow_orchestrator.py",
+        "classifier": "tools/classify_g2_failures.py",
+        "latestRun": "gates/G2-20261123-153435-W1-08-DRYRUN-02",
+        "failureClassificationRequired": true,
+        "promotionRequiresCleanWorktree": true,
+        "promotionRequiresTwoConsecutiveRuns": true
+      }
+    },
+    {
+      "id": "G3",
+      "name": "合并门禁",
+      "stage": "S3",
+      "initialMode": "shadow",
+      "blockingChecks": [
+        "相关模块测试通过",
+        "接口契约和架构规则通过",
+        "依赖和静态安全扫描通过或已分诊",
+        "定向回归通过",
+        "核心变更变异抽样达到阈值或记录改进计划",
+        "PR 证据包完整"
+      ],
+      "requiredEvidence": [
+        "gate-results.json",
+        "contract.json",
+        "architecture.json",
+        "dependency-scan.json",
+        "impact.md",
+        "regression.json"
+      ],
+      "owner": "质量负责人",
+      "failureAction": "禁止合并或进入条件通过审批",
+      "firstRoundMode": "shadow",
+      "targetMode": "blocking-for-P0-P1",
+      "promotion": "第5-6周，核心回归漏选率不高于3%后转阻断"
+    },
+    {
+      "id": "G4",
+      "name": "系统准出",
+      "stage": "S4",
+      "initialMode": "manual-blocking",
+      "blockingChecks": [
+        "P0/P1 业务链路证据完整",
+        "页面、接口和数据库事实一致",
+        "不可逆动作和失败路径已验证",
+        "权限矩阵验证通过",
+        "文件产物结构正确",
+        "人工裁定完成，无未处理阻断项"
+      ],
+      "requiredEvidence": [
+        "runtime/ui",
+        "runtime/api",
+        "runtime/db",
+        "runtime/files",
+        "defects.json",
+        "adjudication.md"
+      ],
+      "owner": "质量负责人",
+      "failureAction": "禁止进入发布候选",
+      "firstRoundMode": "manual-blocking-with-automatic-shadow",
+      "targetMode": "automatic-evidence-check-plus-manual-adjudication",
+      "promotion": "第9-10周，P0链路证据完整后提升自动校验",
+      "manualBlockingChecks": [
+        "P0订单到寄送业务证据",
+        "未确认项责任人",
+        "缺陷裁定",
+        "回滚准备"
+      ]
+    },
+    {
+      "id": "G5",
+      "name": "发布门禁",
+      "stage": "S5",
+      "initialMode": "manual-blocking",
+      "blockingChecks": [
+        "发布包与证据提交号一致",
+        "数据库迁移和回滚演练通过",
+        "证据完整性达到 100%",
+        "灰度观察指标和自动回滚阈值明确",
+        "没有未关闭的 P0/P1 阻断项",
+        "条件和豁免项在期限内且有补偿控制"
+      ],
+      "requiredEvidence": [
+        "release-manifest.json",
+        "migration-report.json",
+        "rollback-drill.md",
+        "observability.md",
+        "approval.json"
+      ],
+      "owner": "发布负责人",
+      "failureAction": "禁止发布或条件发布",
+      "firstRoundMode": "manual-blocking-with-automatic-shadow",
+      "targetMode": "blocking-automatic-after-pilot",
+      "promotion": "第11周完成降级演练且回滚、监控、证据完整性可执行"
+    }
+  ],
+  "layers": [
+    {
+      "id": "L0",
+      "name": "工程与静态质量",
+      "required": true
+    },
+    {
+      "id": "L1",
+      "name": "单元与组件",
+      "required": true
+    },
+    {
+      "id": "L2",
+      "name": "契约与集成",
+      "required": true
+    },
+    {
+      "id": "L3",
+      "name": "变更影响与定向回归",
+      "required": true
+    },
+    {
+      "id": "L4",
+      "name": "业务与系统验证",
+      "required": true
+    },
+    {
+      "id": "L5",
+      "name": "非功能与韧性",
+      "required": "risk-based"
+    },
+    {
+      "id": "L6",
+      "name": "发布后观测",
+      "required": "release"
+    }
+  ],
+  "thresholds": {
+    "gateExecutionRate": 1.0,
+    "evidenceCompleteness": 1.0,
+    "p0p1RequirementEvidenceCoverage": 1.0,
+    "mutationScoreCore": 0.7,
+    "targetedRegressionMissRateMax": 0.03,
+    "blockingFalsePositiveRateMax": 0.05,
+    "warningFalsePositiveRateMax": 0.15,
+    "flakyRateMax": 0.02,
+    "preCommitP95MinutesMax": 10,
+    "mergeGateP95MinutesMax": 20,
+    "runtimeVerificationMinutesMax": 60,
+    "waiverRateMax": 0.05,
+    "changeFailureRateMax": 0.15,
+    "mttrHoursMax": 4
+  },
+  "degradation": {
+    "states": [
+      {
+        "id": "D0",
+        "name": "正常",
+        "retained": [
+          "全部确定性门禁",
+          "运行时证据",
+          "AI 初筛",
+          "发布观测"
+        ],
+        "removed": []
+      },
+      {
+        "id": "D1",
+        "name": "观察",
+        "retained": [
+          "构建",
+          "单元测试",
+          "Secret 扫描",
+          "权限检查",
+          "核心契约"
+        ],
+        "removed": [
+          "AI 建议作为阻断",
+          "低置信度静态规则作为阻断",
+          "非核心告警作为阻断"
+        ]
+      },
+      {
+        "id": "D2",
+        "name": "核心优先",
+        "retained": [
+          "核心构建",
+          "核心单元测试",
+          "核心契约",
+          "P0 业务验证",
+          "人工复核"
+        ],
+        "removed": [
+          "非核心 E2E",
+          "全量探索",
+          "低优先级静态规则"
+        ]
+      },
+      {
+        "id": "D3",
+        "name": "人工兜底",
+        "retained": [
+          "核心冒烟",
+          "关键人工检查",
+          "发布审批",
+          "回滚准备"
+        ],
+        "removed": [
+          "自动探索",
+          "非必要全量回归",
+          "AI 判定"
+        ]
+      },
+      {
+        "id": "D4",
+        "name": "安全冻结",
+        "retained": [
+          "只读检查",
+          "备份",
+          "回滚演练",
+          "人工紧急审批"
+        ],
+        "removed": [
+          "自动写入",
+          "AI 操作",
+          "非必要变更"
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "condition": "阻断误报率连续两个周期高于 15%",
+        "action": "进入 D1",
+        "escalation": "持续四个周期或开发者普遍绕过时进入 D2",
+        "recovery": "连续两个周期低于 5%"
+      },
+      {
+        "condition": "不稳定用例率高于 5%",
+        "action": "进入 D2",
+        "escalation": "环境连续故障或核心链路不可信时进入 D3",
+        "recovery": "连续两个周期低于 2%"
+      },
+      {
+        "condition": "自动探索无法确认比例超过 40%",
+        "action": "不作为硬门禁，进入 D1/D2",
+        "escalation": "导致发布延误或误判时进入 D3",
+        "recovery": "连续三个批次通过率超过 70% 且误报可接受"
+      },
+      {
+        "condition": "定向回归漏选率高于 3%",
+        "action": "恢复全量核心回归",
+        "escalation": "出现 P0 逃逸缺陷时进入 D4",
+        "recovery": "连续两个周期低于 3%"
+      },
+      {
+        "condition": "发布后出现 P0 或 P1 逃逸缺陷",
+        "action": "冻结相关门禁并启动复盘",
+        "escalation": "同类问题再次发生时进入 D4",
+        "recovery": "根因关闭且新增回归用例通过"
+      },
+      {
+        "condition": "模型、提示词或工具版本发生未记录变化",
+        "action": "关闭 AI 判定，保留确定性工具",
+        "escalation": "证据无法复现时进入 D3",
+        "recovery": "版本固定且回放通过"
+      },
+      {
+        "condition": "环境或数据隔离不满足要求",
+        "action": "进入 D3 或 D4",
+        "escalation": "发现敏感数据或生产写入时立即进入 D4",
+        "recovery": "隔离验证和审计确认通过"
+      }
+    ]
+  },
+  "metrics": [
+    "gateExecutionRate",
+    "evidenceCompleteness",
+    "p0p1RequirementEvidenceCoverage",
+    "mutationScoreCore",
+    "targetedRegressionMissRate",
+    "blockingFalsePositiveRate",
+    "flakyRate",
+    "preCommitP95Minutes",
+    "mergeGateP95Minutes",
+    "waiverRate",
+    "escapedCriticalDefects",
+    "changeFailureRate",
+    "mttrHours"
+  ],
+  "rollout": {
+    "phase": "W1",
+    "decisionDate": "2026-11-23",
+    "environmentStatus": "captured",
+    "environmentFingerprint": "22b04e2e67dbabd47ef7e121f033d15f3ba16315ddb9d185fa86cd49b18115ce",
+    "principles": [
+      "先采集真实证据，再提升阻断级别",
+      "自动探索和AI结论不得单独判定真实缺陷或发布通过",
+      "工具故障必须降级到人工替代检查，不允许静默跳过",
+      "P0安全和数据破坏项不受影子模式保护"
+    ],
+    "gateModes": {
+      "G0": {
+        "initialMode": "shadow",
+        "firstRoundMode": "shadow",
+        "targetMode": "shadow-plus-manual",
+        "promotion": "第3周评估需求证据完整性"
+      },
+      "G1": {
+        "initialMode": "shadow",
+        "firstRoundMode": "shadow",
+        "targetMode": "shadow-plus-manual-for-P0",
+        "promotion": "第5周评估契约、影响分析和回滚说明"
+      },
+      "G2": {
+        "initialMode": "shadow",
+        "firstRoundMode": "shadow-deterministic",
+        "targetMode": "blocking-deterministic",
+        "promotion": "连续两次结果一致、P95不超过10分钟且误报可解释后，第3-4周转阻断"
+      },
+      "G3": {
+        "initialMode": "shadow",
+        "firstRoundMode": "shadow",
+        "targetMode": "blocking-for-P0-P1",
+        "promotion": "第5-6周，核心回归漏选率不高于3%后转阻断"
+      },
+      "G4": {
+        "initialMode": "manual-blocking",
+        "firstRoundMode": "manual-blocking-with-automatic-shadow",
+        "targetMode": "automatic-evidence-check-plus-manual-adjudication",
+        "promotion": "第9-10周，P0链路证据完整后提升自动校验"
+      },
+      "G5": {
+        "initialMode": "manual-blocking",
+        "firstRoundMode": "manual-blocking-with-automatic-shadow",
+        "targetMode": "blocking-automatic-after-pilot",
+        "promotion": "第11周完成降级演练且回滚、监控、证据完整性可执行"
+      }
+    }
+  },
+  "exceptionPolicy": {
+    "policyFile": "10-W1-05条件通过与豁免审批规则.md",
+    "register": "exception-register.csv",
+    "forbidden": [
+      "P0安全问题、认证绕过、越权访问和敏感数据泄露",
+      "Secret、Token、密码或生产凭据进入版本库或证据包",
+      "可导致订单、寄送、面单数据不可恢复损坏的缺陷",
+      "无备份、无回滚或未验证回滚的破坏性数据库迁移",
+      "发布包无法绑定提交号、制品摘要或环境指纹"
+    ],
+    "levels": {
+      "P0": {
+        "allowed": false,
+        "maxDurationHours": 0,
+        "approvers": []
+      },
+      "P1_SECURITY": {
+        "allowedTypes": [
+          "conditional-pass"
+        ],
+        "maxDurationHours": 24,
+        "approvers": [
+          "张树旸",
+          "贾婉月",
+          "李旸"
+        ]
+      },
+      "P1_NON_SECURITY": {
+        "allowedTypes": [
+          "conditional-pass",
+          "waiver"
+        ],
+        "maxDurationHours": 72,
+        "approvers": [
+          "贾婉月",
+          "李旸"
+        ]
+      },
+      "P2_SECURITY": {
+        "allowedTypes": [
+          "conditional-pass"
+        ],
+        "maxDurationHours": 24,
+        "approvers": [
+          "张树旸",
+          "贾婉月",
+          "李旸"
+        ]
+      },
+      "P2_NORMAL": {
+        "allowedTypes": [
+          "conditional-pass",
+          "waiver"
+        ],
+        "maxDurationDays": 10,
+        "approvers": [
+          "贾婉月",
+          "对应门禁责任人"
+        ]
+      }
+    },
+    "controls": [
+      "执行人不得审批自己的例外",
+      "例外到期自动恢复阻断",
+      "环境指纹、提交号或工具版本变化时例外失效",
+      "安全项必须由安全接口人确认，发布项必须由发布负责人确认",
+      "例外率高于5%时进入D1并专题复盘"
+    ],
+    "requiredFields": [
+      "exception_id",
+      "change_id",
+      "commit_sha",
+      "gate_id",
+      "check_id",
+      "severity",
+      "exception_type",
+      "reason",
+      "business_impact",
+      "compensating_control",
+      "revalidation_plan",
+      "owner",
+      "approved_by",
+      "expires_at",
+      "rollback_trigger",
+      "evidence_path"
+    ]
+  },
+  "failureClassificationTaxonomy": {
+    "classes": [
+      "environment/tool",
+      "existing-baseline",
+      "code/build",
+      "code/style",
+      "test/failure",
+      "security",
+      "unknown"
+    ],
+    "rule": "首轮只分类和取证，不直接裁定业务缺陷；P0/P1项由负责人复核并登记下一复验时间。",
+    "confirmedBusinessDefectsRequireHumanApproval": true
+  }
+}

@@ -11,6 +11,10 @@ export interface Charter {
   startUrl: string;
   constraints: string[];
   oracleHints: OracleHint[];
+  /** 仅测试库可用：charter 开始前执行的夹具 SQL（INSERT/UPDATE/DELETE prop_*），需 ALLOW_CHARTER_SQL=true。 */
+  setupSql?: string[];
+  /** 仅测试库可用：无论结果如何都在 finally 执行的恢复 SQL，支持 {{runStartedAt}} 占位符。 */
+  cleanupSql?: string[];
   maxSteps?: number;
 }
 

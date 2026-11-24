@@ -1,0 +1,11 @@
+{
+  "updatedAt": "2026-11-23T15:43:59+08:00",
+  "qualityBaseline": {
+    "json": "E:\\proptest\\systemquality\\baselines\\2026-11-23-quality-baseline.json",
+    "markdown": "E:\\proptest\\systemquality\\baselines\\2026-11-23-quality-baseline.md"
+  },
+  "environmentFingerprint": {
+    "json": "E:\\proptest\\systemquality\\environments\\2026-11-23-environment-fingerprint.json",
+    "markdown": "E:\\proptest\\systemquality\\environments\\2026-11-23-environment-fingerprint.md"
+  }
+}

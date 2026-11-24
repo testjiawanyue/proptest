@@ -17,8 +17,19 @@ export interface Verdict {
 export class Oracle {
   readonly collectedDiffs: DbDiff[] = [];
   private pendingSnapshots: { hintIndex: number; before: DbSnapshot }[] = [];
+  private runStartedAtSql = "";
 
   constructor(private dbProbe: DbProbe | null) {}
+
+  /** Timestamp used to scope run-generated rows in `{{runStartedAt}}` placeholders. */
+  setRunStartedAt(iso: string): void {
+    const date = new Date(iso);
+    this.runStartedAtSql = Number.isNaN(date.getTime()) ? "" : date.toISOString().slice(0, 19).replace("T", " ");
+  }
+
+  private withRunTime(sql: string): string {
+    return this.runStartedAtSql ? sql.replaceAll("{{runStartedAt}}", `'${this.runStartedAtSql}'`) : sql;
+  }
 
   async checkInvariants(charter: Charter, observation: PageObservation, network: NetworkProbe): Promise<Verdict | null> {
     const apiErrors = network.errors();
@@ -42,7 +53,7 @@ export class Oracle {
     });
     for (const pending of this.pendingSnapshots) {
       const hint = charter.oracleHints[pending.hintIndex];
-      pending.before = await this.dbProbe.snapshot(hint.description, hint.sql!);
+      pending.before = await this.dbProbe.snapshot(hint.description, this.withRunTime(hint.sql!));
     }
   }
 
@@ -60,7 +71,8 @@ export class Oracle {
     for (const hint of charter.oracleHints) {
       switch (hint.kind) {
         case "ui-text": {
-          if (hint.expect && !observation.visibleTextSample.includes(hint.expect)) {
+          const observedText = `${observation.visibleTextSample} ${observation.dialogTexts.join(" ")}`;
+          if (hint.expect && !observedText.includes(hint.expect)) {
             anyPending = true;
           }
           break;
@@ -97,7 +109,7 @@ export class Oracle {
           if (hint.sql && this.dbProbe) {
             const pending = this.pendingSnapshots.find((item) => charter.oracleHints[item.hintIndex] === hint);
             if (pending?.before) {
-              const after = await this.dbProbe.snapshot(hint.description, hint.sql);
+              const after = await this.dbProbe.snapshot(hint.description, this.withRunTime(hint.sql));
               const diff = this.dbProbe.diff(hint.description, pending.before, after, hint.keyField ?? "id");
               this.collectedDiffs.push(diff);
               if (hint.expect) {

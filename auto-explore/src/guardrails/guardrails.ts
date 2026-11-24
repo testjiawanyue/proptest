@@ -61,3 +61,37 @@ export function assertBusinessDbOnly(database: string): void {
     );
   }
 }
+
+const CHARTER_SQL_ALLOWED_START = /^(insert|update|delete)\b/i;
+const CHARTER_SQL_BLOCKED_KEYWORDS = /\b(drop|truncate|alter|create|grant|revoke|rename)\b/i;
+
+/**
+ * Charter fixtures may only mutate business-prop tables via INSERT/UPDATE/DELETE,
+ * and only when ALLOW_CHARTER_SQL=true is explicitly set for the test environment.
+ */
+export function assertCharterSqlAllowed(sql: string, enabled: boolean): void {
+  if (!enabled) {
+    throw new GuardrailViolation(
+      "Charter setupSql/cleanupSql is disabled. Set ALLOW_CHARTER_SQL=true only in the isolated test environment.",
+    );
+  }
+  const trimmed = sql.trim();
+  if (!CHARTER_SQL_ALLOWED_START.test(trimmed)) {
+    throw new GuardrailViolation(`Blocked charter SQL (only INSERT/UPDATE/DELETE allowed): ${trimmed.slice(0, 120)}`);
+  }
+  if (CHARTER_SQL_BLOCKED_KEYWORDS.test(trimmed)) {
+    throw new GuardrailViolation(`Blocked charter SQL keyword: ${trimmed.slice(0, 120)}`);
+  }
+  if (trimmed.replace(/;\s*$/, "").includes(";")) {
+    throw new GuardrailViolation(`Multiple SQL statements are not allowed: ${trimmed.slice(0, 120)}`);
+  }
+  const tables = [...trimmed.matchAll(/\b(?:into|update|from)\s+`?([A-Za-z0-9_]+)`?/gi)].map((match) => match[1]);
+  if (tables.length === 0) {
+    throw new GuardrailViolation(`Charter SQL must target a prop_ table: ${trimmed.slice(0, 120)}`);
+  }
+  for (const table of tables) {
+    if (!/^prop_/i.test(table)) {
+      throw new GuardrailViolation(`Charter SQL may only touch prop_* tables, got '${table}'`);
+    }
+  }
+}

@@ -32,6 +32,7 @@ export const config = {
     reportsDir: "reports",
     storageStatePath: "storage/auth.json",
     stateGraphPath: "storage/state-graph.json",
+    allowCharterSql: optional("ALLOW_CHARTER_SQL", "false") === "true",
   },
   llm: {
     apiBase: optional("LLM_API_BASE"),
